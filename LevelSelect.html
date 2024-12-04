@@ -18,7 +18,7 @@
     height: 25vh;
     bottom:0%;
     right:0px;
-    transform: rotate(270deg);
+    transform: scaleX(-1);
 }
 
 #back {
@@ -31,17 +31,12 @@
 }
 
 #pusabtxt {
-    position: fixed;
     font-family: 'Pusab';
     color:white;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%,-30%);
-    font-size:60pt;
-    -webkit-text-stroke-width: 3.2px;
-    text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3); 
+    font-size:23pt;
+    -webkit-text-stroke-width: 1.5px;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3); 
     -webkit-text-stroke-color: black;
-    z-index: 9;
 }
 
 #bgrnd {
@@ -55,12 +50,12 @@
 }
 
 #topbar {
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,0%);
     position: fixed;
-    width:700px;
+    width:50vw;
     height: auto;
     left: 50%;
-    top:5%;
+    top:-1%;
     z-index: 1;
 }
 
@@ -80,56 +75,44 @@
     height: auto;
     width: 100px;
 }
-
+#containercontainer {
+    display: flex;
+    position: fixed;
+    border-radius:20px;
+    background-color:rgba(0, 0, 0, 0.5);
+    padding: 10px 10px 0 10px;
+    text-align:center;
+    margin: 0 auto;
+    width: 70vw;
+    height: 70vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 199;
+    overflow-wrap: normal;
+    flex-wrap: wrap;
+}
 #container {
-    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius:20px;
-    background-color:black;
-    opacity: 25%;
-    padding: 10px 10px 0 10px;
-    text-align:center;
+    background-color:rgba(0, 0, 0, 0.5);
     margin: 0 auto;
-    width: 900px;
-    height: 300px;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
+    width: 320px;
+    height: 120px;
+    z-index: 200;
+    transition-duration: 300ms;
 }
-
-#clickcontainer {
-    position: fixed;
-    border-radius:20px;
-    background-color:black;
-    opacity: 0%;
-    padding: 10px 10px 0 10px;
-    text-align:center;
-    margin: 0 auto;
-    width: 900px;
-    height: 300px;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
+#container:hover {
+    scale: 1.1;
+    cursor: pointer;
+    transition-duration: 300ms;
 }
-
-#rightbtn {
-    position: fixed;
-    width: 80px;
-    height: auto;
-    top:15%;
-    right:4%;
-    transform: translate(50%, 50%);
-}
-
-#leftbtn {
-    position: fixed;
-    width: 80px;
-    height: auto;
-    top:29%;
-    left:1%;
-    transform: translate(50%, 50%);
-    transform: scaleX(-1);
+#diff {
+    width: 40px;
+    height: 40px;
+    margin-right: 4px;
 }
 
 </style>
@@ -139,18 +122,45 @@
 <!--- Whoops I accedentally found the ® symbol. Ah shoot you figured out that I copied/pasted that other screen to make this one. -->
 <div id="bgrnd"></div>
 <body align="center" style="background: linear-gradient(in hsl longer hue 90deg, red 0 0);">
-<>
-<div onclick="playlvl()" id="clickcontainer"></div>
-<p id="pusabtxt"><!-- <img id="difficon" src="style/diffIcon_01_btn_001.png"> -->Stereo Madness</p>
-<div id="container"></div>
+<div id="containercontainer">
+<div id="container" onclick="playlvl('StereoMadness')">
+    <img src="style/diffIcon_01_btn_001.png" id="diff"><p id="pusabtxt">Stereo Madness</p>
+</div>
+
+<div id="container" onclick="playlvl('BackOnTrack')">
+    <img src="style/diffIcon_01_btn_001.png" id="diff"><p id="pusabtxt">Back On Track</p>
+</div>
+
+<div id="container" onclick="playlvl('Polargeist')">
+    <img src="style/diffIcon_02_btn_001.png" id="diff"><p id="pusabtxt">Polargeist</p>
+</div>
+
+<div id="container" onclick="playlvl('DryOut')">
+    <img src="style/diffIcon_03_btn_001.png" id="diff"><p id="pusabtxt">Dry Out</p>
+</div>
+
+<div id="container" onclick="playlvl('BaseAfterBase')">
+    <img src="style/diffIcon_03_btn_001.png" id="diff"><p id="pusabtxt">Base After Base</p>
+</div>
+
+<div id="container" onclick="playlvl('CantLetGo')">
+    <img src="style/diffIcon_03_btn_001.png" id="diff"><p id="pusabtxt">Cant Let Go</p>
+</div>
+
+<div id="container" onclick="playlvl('Jumper')">
+    <img src="style/diffIcon_04_btn_001.png" id="diff"><p id="pusabtxt">Jumper</p>
+</div>
+
+<div id="container" onclick="playlvl('TimeMachine')">
+    <img src="style/diffIcon_04_btn_001.png" id="diff"><p id="pusabtxt">Time Machine</p>
+</div>
+</div>
 
 <img id="corner" src="style/corner.png">
 <img id="corner1" src="style/corner.png">
 <img id="back" onclick="back()" src="style/GJ_arrow_01_001.png">
 <img id="topbar" src="style/GJ_topBar_001.png">
 
-<img id="rightbtn" onclick="right()" src="style/navArrowBtn_001.png">
-<img id="leftbtn" onclick="left()" src="style/navArrowBtn_001.png">
 
 </body>
 <script>
@@ -160,20 +170,16 @@
 //ok me a year later... why did I copy the loading page to make a level select page????
 
 var backbtn = document.getElementById('back');
-var leftB = document.getElementById('leftbtn');
-var rightB = document.getElementById('rightbtn');
 var playsnd = new Audio('audio/playSound_01.ogg')
 
 
-function playlvl() {
+function playlvl(lvlname) {
     playsnd.play();
+    setTimeout(() => {
+    location.href = "LevelHTMLS/"+ lvlname + ".html";
+    }, 1500);
 }
-function left() {
-    alert('This used to have a function but I made the page better so it doesnt anymore lol left()')
-}
-function right() {
-    alert('This used to have a function but I made the page better so it doesnt anymore lol right()')
-}
+
 function back() {
     backbtn.style.width = "110px";
     backbtn.style.height = "142px";

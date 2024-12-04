@@ -25,9 +25,9 @@ document.addEventListener('keydown', function(keys) {
     // - H: 72
     
     if (keys.which == 79) {
-        document.getElementById('player').src = "icons/geometryoliver.png";
+        document.getElementById('player').src = "../icons/geometryoliver.png";
     }
     if (keys.which == 72) {
-        document.getElementById('player').src = "icons/blockhead66.png";
+        document.getElementById('player').src = "../icons/blockhead66.png";
     }
     });

@@ -49,7 +49,7 @@ function loadData() {
         } else {
             //heheheeheifworgbefjsdnkvjbgrueoiwfnkjdsbgeoruiewjfp
             //turn line of code below into/out of a comment to disable/enable the lobotomy
-            //sBVal.src = "Blocks/3854.png";
+            //sBVal.src = "../Blocks/3854.png";
         }
         sBVal.style.cssText = props; //gives block the property
         document.getElementById("levelContainer").appendChild(sBVal.cloneNode(true)); //*spawns elem*
@@ -92,6 +92,7 @@ function loadData() {
     let x = -20;
 	//mac and chromebook xV is 15.9
 	//windows xV is 14.5
+    //turns out this is probably based on how much fps you get... good luck!
     let xV = 15.9;
     let yV = 1; //y - Velocity
     let g = 2.53;
@@ -105,7 +106,7 @@ function loadData() {
         window.addEventListener("keyup", (e)=>{if(e.which === 32 || e.which === 87 || e.which === 38){btnD = 0;}});
         
         setInterval(() =>{
-            console.log(`y velocity: ${yV}, y position ${y}, gdir: ${gDir}`)
+            //console.log(`y velocity: ${yV}, y position ${y}, gdir: ${gDir}`)
 //CUBE MECH
             if(plyrMech == 'cube'){
                 if(btnD == 1){
@@ -180,7 +181,7 @@ function loadData() {
                 // I think these are the portal collision actions
                 if(coll.map((elm)=> elm[0][1]).includes('12')){ // Cube Portal
                     plyrMech = 'cube';
-                    document.getElementById('player').src = "icons/robtop.png";
+                    document.getElementById('player').src = "../icons/robtop.png";
                     g = 2.53;
                     r = 0;
                 }
@@ -188,12 +189,12 @@ function loadData() {
                     plyrMech = 'ship';
                     r = 0;
                     g = 0.9;
-                    document.getElementById('player').src = "icons/ship1.5.png";
+                    document.getElementById('player').src = "../icons/ship0.5.png";
 
                 }
                 if(coll.map((elm)=> elm[0][1]).includes('47')){ // Ball Portal
                     plyrMech = 'ball';
-                    document.getElementById('player').src = "icons/ball1.png";
+                    document.getElementById('player').src = "../icons/ball.png";
                 }
                 if(coll.map((elm)=> elm[0][1]).includes('11')){
                     gDir = 1;
