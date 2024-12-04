@@ -3,10 +3,11 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/OLIVER427/GD-LevelLoaderJS)
 ![GitHub Repo stars](https://img.shields.io/github/stars/OLIVER427/GD-LevelLoaderJS)
 ![GitHub forks](https://img.shields.io/github/forks/OLIVER427/GD-LevelLoaderJS)
+#### this is an old project that I am just now modifying to put on github, we will probably not be able to fix any issues you have with the site.
 
 # Geometry Dash Level Loader
 
-A very laggy mess, but a recreation of Geometry Dash, made in pure Javascript, HTML, and CSS. So far,
+A very laggy mess, but a recreation of Geometry Dash, made in pure Javascript, HTML, and CSS. So far, we have a (mostly) functioning cube gamemode, and a partially working ship gamemode, along with a really broken ball gamemode.
 
 ## Well, how can I make a level?
 You can use GDColon's [Spreadsheet Editor](https://gdcolon.com/gdsheet), and copy your level data into the Level Viewer (through the editor button on the title screen). Then to play it you put the level data in as a variable in one of the existing javascript files, which should look something like this:
@@ -22,4 +23,15 @@ Make sure that your level has over 100 objects in it, because otherwise the site
 Well, a lot. I helped make this with [BlockHead66](https://github.com/Blockhead66), when we had a lot less knowledge of Javascript and CSS, so I made some dumb mistakes and just ignored things that could have been WAY more efficient. I also have to individually grab each image file from a spritesheet (using GDColon's [Spritesheet Splitter](https://gdcolon.com/gdsplitter/))
 
 ## Why are Back On Track and other levels impossible?!?!!
-sorry about that, I pulled the level data from the game (using GDColon's [Save Explorer](https://gdcolon.com/gdsave/)), and I cant change the data easily. Paired with the fact that you will teleport up any blocks you would think you'd crash into, in Back On Tracks's case, you teleport straight into a spike. These spikes do indeed make you have to restart the level.
+sorry about that, I pulled the level data from GD (using GDColon's [Save Explorer](https://gdcolon.com/gdsave/)), and I cant change the data easily. Paired with the fact that you will teleport up any blocks you would think you'd crash into, in Back On Tracks's case, you teleport straight into a spike. These spikes do indeed make you have to restart the level.
+
+## What should I do to avoid lag or full crashes?
+Well maybe dont play this if you're looking for a smooth experience, but I have a little list of things to avoid.
+
+- Hitting the ground in upside down ship gamemode will crash the site (It tries to teleport to the bottom of it, but since it is the floor it would have to go infinitly, which it tries to do, and then crashes the site). this crash is also known as "dissapointment.jpg" which I recreated in real GD for my github pfp.
+
+- When making a level, make sure it has over 100 objects or else the site will begin to lag out and eventually stop running.
+
+- Try not to load a level with too many objects, each one is an ``` <img> ``` HTML element, and too many will lag out the site (if you check funlevels.js in the javascript folder you will see that I tried).
+
+- Using the ball gamemode at all is very risky and a similar thing that happens with upside down ship will happen if you try to use the weird glitchy swingcopter ball gamemode that we somehow made.
