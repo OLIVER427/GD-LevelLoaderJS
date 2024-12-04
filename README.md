@@ -3,7 +3,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/OLIVER427/GD-LevelLoaderJS)
 ![GitHub Repo stars](https://img.shields.io/github/stars/OLIVER427/GD-LevelLoaderJS)
 ![GitHub forks](https://img.shields.io/github/forks/OLIVER427/GD-LevelLoaderJS)
-#### this is an old project that I am just now modifying to put on github, we will probably not be able to fix any issues you have with the site.
+##### this is an old project that I am just now modifying to put on github, we will probably not be able to fix any issues you have with the site. This code is from a long time ago and it is very unorganized and inefficient. You have been warned.
 
 # Geometry Dash Level Loader
 
@@ -20,7 +20,7 @@ The example loads in my testing level for messing with the orbs stuff (keep in m
 Make sure that your level has over 100 objects in it, because otherwise the site will just lag out a lot, and then crash.
 
 ## What is wrong with this thing!??!
-Well, a lot. I helped make this with [BlockHead66](https://github.com/Blockhead66), when we had a lot less knowledge of Javascript and CSS, so I made some dumb mistakes and just ignored things that could have been WAY more efficient. I also have to individually grab each image file from a spritesheet (using GDColon's [Spritesheet Splitter](https://gdcolon.com/gdsplitter/))
+Well, a lot. I helped make this with [BlockHead66](https://github.com/Blockhead66), when we had a lot less knowledge of Javascript and CSS, so I made some dumb mistakes and just ignored things that could have been WAY more efficient. I also have to individually grab each image file from a spritesheet (using GDColon's [Spritesheet Splitter](https://gdcolon.com/gdsplitter/)) so not every block and their functions are in the site.
 
 ## Why are Back On Track and other levels impossible?!?!!
 sorry about that, I pulled the level data from GD (using GDColon's [Save Explorer](https://gdcolon.com/gdsave/)), and I cant change the data easily. Paired with the fact that you will teleport up any blocks you would think you'd crash into, in Back On Tracks's case, you teleport straight into a spike. These spikes do indeed make you have to restart the level.
@@ -32,6 +32,6 @@ Well maybe dont play this if you're looking for a smooth experience, but I have 
 
 - When making a level, make sure it has over 100 objects or else the site will begin to lag out and eventually stop running.
 
-- Try not to load a level with too many objects, each one is an ``` <img> ``` HTML element, and too many will lag out the site (if you check funlevels.js in the javascript folder you will see that I tried).
+- Try not to load a level with too many objects (over maybe 10k), each one is an ``` <img> ``` HTML element, and too many will lag out the site (if you check funlevels.js in the javascript folder you will see that I tried).
 
 - Using the ball gamemode at all is very risky and a similar thing that happens with upside down ship will happen if you try to use the weird glitchy swingcopter ball gamemode that we somehow made.
