@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<style>
+#levelContainer img{
+    position: absolute;
+    width: 70px;
+    max-height: 300px;
+}
+#dataInput{
+    position: fixed;
+    background-color: #d5d2d5;
+    opacity: 50%;
+    border: 3px solid #d5d2d5;
+    height: 20px;
+    border-radius: 1px;
+    z-index: 9999999999;
+    transition-duration: 200ms;
+}
+#dataInput:focus{
+    outline: 3px solid #858285;
+    box-shadow: 0px 0px 10px 1px rgb(54, 52, 54);
+    transition-duration: 300ms;
+}
+</style>
+<body style="overflow: scroll;width:9999999999999999999999999999999999999999999999999999999999999999999999999999999999999px;background-color: #6941ef;">
+    <div>
+        <input  id="dataInput" style="width: 87vw;" placeholder=" insert data here...">
+        <button id="dataInput" style=" width: 9vw; left:89vw; padding: 4px 0 18px 0" onClick="loadData()">Load Data</button>
+    </div>
+<div id="levelContainer">
+</div> 
+</body>
+<script src="javascript/blockPresets.js" ></script>
+<script>
+console.log() // CALCULATOR
+    
+//EXAMPLE DATA: kS38,1_255_2_0_3_0_4_-1_6_1000_7_1|1_255_2_153_3_0_4_-1_6_1001_7_1|1_255_2_255_3_0_4_-1_6_1009_7_1|1_255_2_255_3_255_4_-1_6_1004_7_1|1_255_2_255_3_255_4_-1_6_1002_7_1|,kA13,0,kA15,0,kA16,0,kA14,,kA6,5,kA7,7,kA17,1,kA18,0,kS39,0,kA2,0,kA3,0,kA8,0,kA4,0,kA9,0,kA10,0,kA11,0;1,1,2,15,3,15;1,83,2,45,3,15;1,1332,2,75,3,28,6,180;1,1332,2,105,3,2;
+
+//REFERENCE:
+//scale = blockValue[0]
+//imgID = blockValue[1]
+//b = blockValue[2]
+//xPos = blockValue[3]
+//zPos = blockValue[4]
+//yPos = blockValue[5]
+//c = blockValue[6]
+//dir = blockValue[7] 
+//THIS HAS NOW BEEN PROVED TO BE PARTIALLY FALSE. USE THE UPDATED VERSION (COMING SOON)
+let levelData
+function loadData() {
+    document.getElementById("levelContainer").innerHTML = " "
+    //var lvlsong = new Audio('audio/' + Object.keys({levelData})[0] +'.mp3');
+    //console.log(lvlsong);
+    levelData = document.getElementById("dataInput").value;
+    //organizing data
+    let dcAyVal = [['0', '0'],['-','-'],['-','-'],['-','-'],['transform: scale(-',',1)'],['scale:1 -',''],['rotate:','deg']];
+    let blockData = levelData.split(';').map((elm) => elm.split(','));
+    //console.log(blockData.slice(1).map((elm)=> elm[1]))
+    let collData = blockData.slice(1).map((elm) => Object.keys(blockPresets).includes(elm[1]) ? [elm,'b'] : (Object.keys(spikePresets).includes(elm[1]) ? [elm,'s']: Object.keys(specialPresets).includes(elm[1]) ? [elm,'p']: '')).filter(String);
+    let bDims = Object.assign(blockPresets, spikePresets, specialPresets);
+    let sBVal = document.createElement("img"); //setBlockValue
+    
+    //canvas setup
+    //let c = document.getElementById('canvas')
+    //let ctx = document.getElementById('canvas').getContext('2d')
+    //let lstX = 0;
+    //let lstY = 0;
+
+    //load imgs
+    let a = 1;
+    while(a < blockData.length){ //This while loop repeats it for every block                    This over here is a fun random rotation value thing. try it sometime
+        let props = 'left:' + blockData[a][3] *2.3333 + 'px;bottom:' + (blockData[a][5]-300) *2.3333 + 'px;' //+ ' transform:rotate(' + blockValue[5] +'deg)'; edit: I think it will break the site
+        let i = 7; //starts at 7 to skip sections of data (id, xPos, yPos)
+        while(i < blockData[a].length){//tuning the props variable.
+            let key = blockData[a][i-1];
+            if (dcAyVal[key] != undefined){ //debug purpopses: basically set css values to nothing if it is undefined
+                props = props + dcAyVal[key][0] + blockData[a][i] + dcAyVal[key][1] + ';';
+            }
+        i = i+2; //next property!
+        };
+        sBVal.src = "Blocks/" + blockData[a][1] + ".png"; //set srcs img
+        //user coin coin coin coin fire in the hole
+        if (blockData[a][1] == 1329) {
+            sBVal.src = "Blocks/1329.gif"; //set srcs img
+        } else {
+            //heheheeheifworgbefjsdnkvjbgrueoiwfnkjdsbgeoruiewjfp
+            //turn line of code below into/out of a comment to disable/enable the lobotomy
+            //sBVal.src = "Blocks/3854.png"; //turns everying (except coins) into normal faces
+        }
+        sBVal.style.cssText = props; //gives block the property
+        document.getElementById("levelContainer").appendChild(sBVal.cloneNode(true)); //*spawns elem*
+        a++; //next block!
+    };  
+    window.scrollTo(0,1000)
+    }
+document.getElementById('levelContainer').style.zoom = "0.50"
+</script>
+
+

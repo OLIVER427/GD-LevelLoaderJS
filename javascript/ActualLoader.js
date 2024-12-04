@@ -1,57 +1,7 @@
-<!DOCTYPE html>
-"(っ- ‸ - ς)ᶻ z 𐰁  Hello! why are you reading this? this is not supposed to be seen
-<html id="html" style="overflow: hidden">
-
-<!-- imgs to edit (Id):18,19,20,21,39,45-60,99,100,106,107,129,130-->
-<style>
-#levelContainer img{
-    position: absolute;
-    width: 70px;
-    max-height: 300px;
-}
-.bg{
-    filter: /*sepia(100%) saturate(1000%) brightness(70%) hue-rotate(180deg)*/ opacity(50%);
-    position:fixed;
-    top:0;
-    left:0;
-    background:url('style/bg.png');
-    width:100vw;
-    height:100vh;
-    background-size:100% auto;
-    background-position:0px;
-    z-index:-101;
-}
-</style>
-<title>GD Level Loaded</title>
-<link rel="icon" href="style/diffIcon_02_btn_001.png">
-
-    
-    
-    
-    
-<body style="background-color: blue;">
-    <div class="bg" id="bg">
-    </div>
-    <div id ="levelContainer" style="overflow: hidden;height: 10000px;">
-        <!--The imgs go here-->
-    </div>
-<img id="player" src="icons/robtop.png" style="position: absolute;width: 70px; height: auto;">
-<!--<canvas id="canvas" style="background-color: red; position: absolute; width: 100000px; height: 10000px;border:1px solid #d3d3d3; bottom: -650px; z-index: -100"></canvas>--->
-</body>
-</html> 
-
-<!-- Grabbing our levels here-->
-<script src="funlevels.js" ></script>
-<script src="ailevels.js" ></script>
-<script src="levels.js" ></script>
-<script src="testlevels.js" ></script>
-
-<script src="blockPresets.js" ></script>
-<script>
 var page = document.getElementById('html');
 //page.requestFullscreen();                       LEVEL DATA REF
                                                 //\\\\\\\///////////
-                                                let levelData = StereoMadness;//
+                                                //let levelData = StereoMadness;//
                                                 /////////\\\\\\\\\\\\
 let bgImage = document.getElementById('bg');
 
@@ -92,10 +42,10 @@ function loadData() {
             }
         i = i+2; //next property!
         };
-        sBVal.src = "Blocks/" + blockData[a][1] + ".png"; //set srcs img
+        sBVal.src = "../Blocks/" + blockData[a][1] + ".png"; //set srcs img
         //user coin coin coin coin fire in the hole
         if (blockData[a][1] == 1329) {
-            sBVal.src = "Blocks/1329.gif"; //set srcs img
+            sBVal.src = "../Blocks/1329.gif"; //set srcs img
         } else {
             //heheheeheifworgbefjsdnkvjbgrueoiwfnkjdsbgeoruiewjfp
             //turn line of code below into/out of a comment to disable/enable the lobotomy
@@ -118,11 +68,11 @@ function loadData() {
                 document.getElementById('player').style.transform = 'rotation: 0deg';
                 function rnThru(){
                     if (frameNum > mxFrame[dfx]) {
-                        document.getElementById('player').src = 'style/robtop.png';
+                        document.getElementById('player').src = '../style/robtop.png';
                         clearInterval(playDfx);
                     }else{
                         document.getElementById('player').style.width = "200px"
-                        document.getElementById('player').src = "MiscSheets/PlayerExplosion_" + dfx + "-hd/" + frameNum + ".png";
+                        document.getElementById('player').src = "../MiscSheets/PlayerExplosion_" + dfx + "-hd/" + frameNum + ".png";
                         //frameNum++;
                     }
                 }
@@ -319,7 +269,7 @@ function loadData() {
 };
 
 //OK OK replace it with an array LATER. this can be temporary
-if (levelData == StereoMadness) {
+if (levelData == StereoMadness) { // edit like a year later: Clearly "temporary" means forever cause I'm lazy
     var lvlsong = new Audio('audio/StereoMadness.mp3');
 }if (levelData == BackOnTrack) {
     var lvlsong = new Audio('audio/BackOnTrack.mp3');
@@ -348,5 +298,3 @@ setTimeout(() => {
 }, 200);
 }, 100);
 setInterval(movebg,40);
-
-</script>
