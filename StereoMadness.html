@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+"(っ- ‸ - ς)ᶻ z 𐰁  Hello! why are you reading this? this is not supposed to be seen
+<html id="html" style="overflow: hidden">
+
+<!-- imgs to edit (Id):18,19,20,21,39,45-60,99,100,106,107,129,130-->
+<style>
+#levelContainer img{
+    position: absolute;
+    width: 70px;
+    max-height: 300px;
+}
+.bg{
+    filter: /*sepia(100%) saturate(1000%) brightness(70%) hue-rotate(180deg)*/ opacity(50%);
+    position:fixed;
+    top:0;
+    left:0;
+    background:url('style/bg.png');
+    width:100vw;
+    height:100vh;
+    background-size:100% auto;
+    background-position:0px;
+    z-index:-101;
+}
+</style>
+<title>GD Level Loaded</title>
+<link rel="icon" href="style/diffIcon_02_btn_001.png">
+
+    
+    
+    
+    
+<body style="background-color: blue;">
+    <div class="bg" id="bg">
+    </div>
+    <div id ="levelContainer" style="overflow: hidden;height: 10000px;">
+        <!--The imgs go here-->
+    </div>
+<img id="player" src="icons/robtop.png" style="position: absolute;width: 70px; height: auto;">
+<!--<canvas id="canvas" style="background-color: red; position: absolute; width: 100000px; height: 10000px;border:1px solid #d3d3d3; bottom: -650px; z-index: -100"></canvas>--->
+</body>
+</html> 
+
+<!-- Grabbing our levels here-->
+<script src="funlevels.js" ></script>
+<script src="ailevels.js" ></script>
+<script src="levels.js" ></script>
+<script src="testlevels.js" ></script>
+
+<script src="blockPresets.js" ></script>
+<script>
+var page = document.getElementById('html');
+//page.requestFullscreen();                       LEVEL DATA REF
+                                                //\\\\\\\///////////
+                                                let levelData = StereoMadness;//
+                                                /////////\\\\\\\\\\\\
+let bgImage = document.getElementById('bg');
+
+function movebg() {
+    bgpos += 2;
+    bgImage.style.backgroundPositionX = "-" + bgpos + "px";
+}
+var bgpos = 0;
+
+
+function loadData() {
+    //var lvlsong = new Audio('audio/' + Object.keys({levelData})[0] +'.mp3');
+    //console.log(lvlsong);
+    
+    //organizing data
+    let dcAyVal = [['0', '0'],['-','-'],['-','-'],['-','-'],['transform: scale(-',',1)'],['scale:1 -',''],['rotate:','deg']];
+    let blockData = levelData.split(';').map((elm) => elm.split(','));
+    //console.log(blockData.slice(1).map((elm)=> elm[1]))
+    let collData = blockData.slice(1).map((elm) => Object.keys(blockPresets).includes(elm[1]) ? [elm,'b'] : (Object.keys(spikePresets).includes(elm[1]) ? [elm,'s']: Object.keys(specialPresets).includes(elm[1]) ? [elm,'p']: '')).filter(String);
+    let bDims = Object.assign(blockPresets, spikePresets, specialPresets);
+    let sBVal = document.createElement("img"); //setBlockValue
+    
+    //canvas setup
+    //let c = document.getElementById('canvas')
+    //let ctx = document.getElementById('canvas').getContext('2d')
+    //let lstX = 0;
+    //let lstY = 0;
+
+    //load imgs
+    let a = 1;
+    while(a < blockData.length){ //This while loop repeats it for every block                    This over here is a fun random rotation value thing. try it sometime
+        let props = 'left:' + blockData[a][3] *2.3333 + 'px;bottom:' + (blockData[a][5]-300) *2.3333 + 'px;'; //+ ' transform:rotate(' + blockValue[5] +'deg)';
+        let i = 7; //starts at 7 to skip sections of data (id, xPos, yPos)
+        while(i < blockData[a].length){//tuning the props variable.
+            let key = blockData[a][i-1];
+            if (dcAyVal[key] != undefined){ //debug purpopses: basically set css values to nothing if it is undefined
+                props = props + dcAyVal[key][0] + blockData[a][i] + dcAyVal[key][1] + ';';
+            }
+        i = i+2; //next property!
+        };
+        sBVal.src = "Blocks/" + blockData[a][1] + ".png"; //set srcs img
+        //user coin coin coin coin fire in the hole
+        if (blockData[a][1] == 1329) {
+            sBVal.src = "Blocks/1329.gif"; //set srcs img
+        } else {
+            //heheheeheifworgbefjsdnkvjbgrueoiwfnkjdsbgeoruiewjfp
+            //turn line of code below into/out of a comment to disable/enable the lobotomy
+            //sBVal.src = "Blocks/3854.png";
+        }
+        sBVal.style.cssText = props; //gives block the property
+        document.getElementById("levelContainer").appendChild(sBVal.cloneNode(true)); //*spawns elem*
+        a++; //next block!
+    };  
+        //dfx
+            let dfx;
+            let mxFrame = [0,12,10,10,9,10,13,11,11,14,12,12,12,10,14,16,19,15,23,13];
+            let frameNum = 1;
+            let playDfx;
+    
+            function death() {
+                dfx = Math.round(Math.random()*18.5 + 1);
+                frameNum = 1;
+                playDfx = setInterval(rnThru, 60)
+                document.getElementById('player').style.transform = 'rotation: 0deg';
+                function rnThru(){
+                    if (frameNum > mxFrame[dfx]) {
+                        document.getElementById('player').src = 'style/robtop.png';
+                        clearInterval(playDfx);
+                    }else{
+                        document.getElementById('player').style.width = "200px"
+                        document.getElementById('player').src = "MiscSheets/PlayerExplosion_" + dfx + "-hd/" + frameNum + ".png";
+                        //frameNum++;
+                    }
+                }
+            }
+
+    //collision
+    let clckT = -1;
+    let gDir = -1; //gravity direction
+    function collCheck(a) { //set "coll" to all the elements colliding with it.
+        coll = collData.map((elm) => elm[0][3]*2.33 + bDims[elm[0][1]][0]*35 >= x-35 && elm[0][3]*2.33 - bDims[elm[0][1]][0]*35 <= x+35 && elm[0][5]*2.33-660 + bDims[elm[0][1]][1]*35 >= a && elm[0][5]*2.33-660 - bDims[elm[0][1]][1]*35 <= a+70 ? elm : '').filter(String);// collision check
+        coll = coll.length == 0 && a <= -660 ? [[['0'],'b']] : coll;//if you are colliding with the ground NOTE: MAJOR BUGS IF THERE ARE LESS THAN 100 OBJECTS
+       //console.log(coll)
+    };
+//colldata.map((elm)=> object's X > plyrX
+    let plyrMech = 'cube';
+    let y = -660;
+    let x = -20;
+	//mac and chromebook xV is 15.9
+	//windows xV is 14.5
+    let xV = 15.9;
+    let yV = 1; //y - Velocity
+    let g = 2.53;
+    let r = 0;
+    let btnD = 0;
+    
+    setTimeout(function(){
+
+        //button detection
+        window.addEventListener("keydown", (e)=>{if(e.which === 32 || e.which === 87 || e.which === 38){btnD = 1; clckT = 1}}); //detect when keys are pressed.
+        window.addEventListener("keyup", (e)=>{if(e.which === 32 || e.which === 87 || e.which === 38){btnD = 0;}});
+        
+        setInterval(() =>{
+            console.log(`y velocity: ${yV}, y position ${y}, gdir: ${gDir}`)
+//CUBE MECH
+            if(plyrMech == 'cube'){
+                if(btnD == 1){
+                    g = 2.53;
+                    collCheck(y+2*gDir);
+                    yV = coll.map((elm)=> elm[1]).includes('b')? 28*-gDir: yV;//this is where it sets the y velocity
+                }
+                r+=xV/1.78 *-gDir;
+            }
+//SHIP MECH
+            if(plyrMech == 'ship'){
+                if(btnD == 1){
+                    yV = yV < 25 ? yV + (-gDir*2): 25;
+                }
+                r = r>= 45 && btnD == 0 ? 45: -yV/0.5;
+            }
+//BALL MECH
+            if(plyrMech == 'ball'){
+                if(btnD == 1){
+                    collCheck(y+2*gDir);
+                    yV = coll.map((elm)=> elm[1]).includes('b')? 28*gDir: yV;
+                    yV += 10 * gDir;
+                    y += 2*-gDir;
+                    gDir = -gDir;
+                }
+                r += 5;
+            }
+//UFO MECH
+            if(plyrMech == 'ufo'){
+                
+            }
+//WAVE MECH
+            if(plyrMech == 'wave'){
+                
+            }
+//ROBOT MECH
+            if(plyrMech == 'robot'){
+                
+            }
+//SPIDER MECH
+            if(plyrMech == 'spider'){
+                
+            }
+//SWING MECH
+            if(plyrMech == 'swing'){
+                
+            }
+            
+            //gravity
+            yV = yV+g*gDir;
+            y = y+yV;
+            
+            collCheck(y);
+            //spike collisions
+            if(coll.map((elm)=> elm[1]).includes('s')){
+                //death()
+                //setTimeout(() => {
+                location.reload()
+                //}, 1000);
+            }
+            //block collisions    
+            if(coll.map((elm)=> elm[1]).includes('b')) {
+                yV = 0;
+                r = Math.round(r/90)*90;
+                while (coll.map((elm)=> elm[1]).includes('b')){
+                    y += -gDir;
+                    collCheck(y);
+                }
+            } 
+            //special collisions:
+            if(coll.map((elm)=> elm[1]).includes('p')){
+                // I think these are the portal collision actions
+                if(coll.map((elm)=> elm[0][1]).includes('12')){ // Cube Portal
+                    plyrMech = 'cube';
+                    document.getElementById('player').src = "icons/robtop.png";
+                    g = 2.53;
+                    r = 0;
+                }
+                if(coll.map((elm)=> elm[0][1]).includes('13')){ // Ship Portal
+                    plyrMech = 'ship';
+                    r = 0;
+                    g = 0.9;
+                    document.getElementById('player').src = "icons/ship1.5.png";
+
+                }
+                if(coll.map((elm)=> elm[0][1]).includes('47')){ // Ball Portal
+                    plyrMech = 'ball';
+                    document.getElementById('player').src = "icons/ball1.png";
+                }
+                if(coll.map((elm)=> elm[0][1]).includes('11')){
+                    gDir = 1;
+                    document.getElementById('player').style.transform = 'scaleY(-1)';
+                }
+                if(coll.map((elm)=> elm[0][1]).includes('10')){
+                    gDir = -1;
+                    document.getElementById('player').style.transform = 'scaleY(1)';
+                }
+                //yellow orb
+                if(coll.map((elm)=> elm[0][1]).includes('36') && clckT > 0 ){
+                    yV = 28;
+                }
+                //yellow pad
+                if(coll.map((elm)=> elm[0][1]).includes('35')){
+                    yV = 35;
+                }
+                //blue pad
+                if(coll.map((elm)=> elm[0][1]).includes('67')){
+                    if (gDir == 1) {
+                        gDir = -1
+                        document.getElementById('player').style.transform = 'scaleY(1)';
+                    }
+                    if (gDir == -1) {
+                        gDir = 1
+                        document.getElementById('player').style.transform = 'scaleY(-1)';
+                    }
+                }
+                //blue orb
+                if(coll.map((elm)=> elm[0][1]).includes('84') && btnD == 1 ){
+                    if (gDir == 1) {
+                        gDir = -1
+                    }
+                    if (gDir == -1) {
+                        gDir = 1
+                    }
+                }
+                //red pad
+                if(coll.map((elm)=> elm[0][1]).includes('1332') ){
+                    yV = 50;
+                }
+                //red orb
+                if(coll.map((elm)=> elm[0][1]).includes('1333') && btnD == 1 ){
+                    yV = 50;
+                }
+                //purple pad
+                if(coll.map((elm)=> elm[0][1]).includes('140') ){
+                    yV = 17;
+                }
+                //purple orb
+                if(coll.map((elm)=> elm[0][1]).includes('141')&& btnD == 1){
+                    yV = 17;
+                }
+
+            }
+            //console.log(yV)
+            x = x + xV;
+
+            if(clckT >= 0){
+                clckT += 0.02;
+
+            }
+                
+//update frame:
+            document.getElementById('player').style.left = x + 'px'; 
+            document.getElementById('player').style.bottom = y + 'px'; 
+            document.getElementById('player').style.rotate = r + 'deg';
+            if(x>= 350){
+                window.scroll({ top: 750, left: x-350, behavior: 'auto' });
+            }
+        },20);
+    }, 20);
+};
+
+//OK OK replace it with an array LATER. this can be temporary
+if (levelData == StereoMadness) {
+    var lvlsong = new Audio('audio/StereoMadness.mp3');
+}if (levelData == BackOnTrack) {
+    var lvlsong = new Audio('audio/BackOnTrack.mp3');
+} if (levelData == Polargeist) {
+    var lvlsong = new Audio('audio/Polargeist.mp3');
+} if (levelData == DryOut) {
+    var lvlsong = new Audio('audio/DryOut.mp3');
+} if (levelData == BaseAfterBase) {
+    var lvlsong = new Audio('audio/BaseAfterBase.mp3');
+} if (levelData == CantLetGo) {
+    var lvlsong = new Audio('audio/CantLetGo.mp3');
+} if (levelData == Jumper) {
+    var lvlsong = new Audio('audio/Jumper.mp3');
+} if (levelData == TimeMachine) {
+    var lvlsong = new Audio('audio/TimeMachine.mp3');
+} if (levelData == Cycles) {
+    var lvlsong = new Audio('audio/Cycles.mp3');
+} if (levelData == Xstep) {
+    var lvlsong = new Audio('audio/xStep.mp3');
+} 
+
+setTimeout(() => {
+    loadData()
+    setTimeout(() => {
+    lvlsong.play()
+}, 200);
+}, 100);
+setInterval(movebg,40);
+
+</script>

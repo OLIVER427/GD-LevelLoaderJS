@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<title>Death Effect Testing</title>
+<link rel="icon" href="style/explosionIcon_14_001.png">
+<style>
+#player {
+    height: 700px; 
+    width: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+</style>
+<body style="background-color: black;">
+<img id="player" align="center" src="">
+</body>
+<script>
+    var Deffect = Math.round(Math.random()*18.5 + 1);
+    let mxFrame = [0,12,10,10,9,10,13,11,11,14,12,12,12,10,14,16,19,15,23,13];
+    let frameNum = 1;
+    function death() {
+        let playDfx = setInterval(rnThru, 60)    
+        function rnThru(){
+            console.log(frameNum);
+            if (frameNum > mxFrame[Deffect]) {
+                clearInterval(playDfx)
+            }else{
+                document.getElementById('player').src = "MiscSheets/PlayerExplosion_" + Deffect + "-hd/" + frameNum + ".png";
+                frameNum++;
+            }
+        }
+    }
+    death();
+</script>
+
+<!--function randomIntFromInterval(min, max) { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+    var Deffect = randomIntFromInterval(1, 19);
+
+//    var player = document.getElementById('player')
+    var spritenum = 1;
+    var maxsprite = 0;
+
+    
+    if (Deffect === 1) {
+        maxsprite = 12
+    }
+    if (Deffect === 2) {
+        maxsprite = 10
+    }
+    if (Deffect === 3) {
+        maxsprite = 10
+    }
+    if (Deffect === 4) {
+        maxsprite = 9
+    }
+    if (Deffect === 5) {
+        maxsprite = 10
+    }
+    if (Deffect === 6) {
+        maxsprite = 13
+    }
+    if (Deffect === 7) {
+        maxsprite = 11
+    }
+    if (Deffect === 8) {
+        maxsprite = 11
+    }
+    if (Deffect === 9) {
+        maxsprite = 14
+    }
+    if (Deffect === 10) {
+        maxsprite = 12
+    }
+    if (Deffect === 11) {
+        maxsprite = 12
+    }
+    if (Deffect === 12) {
+        maxsprite = 12
+    }
+    if (Deffect === 13) {
+        maxsprite = 10
+    }
+    if (Deffect === 14) {
+        maxsprite = 14
+    }
+    if (Deffect === 15) {
+        maxsprite = 16
+    }
+    if (Deffect === 16) {
+        maxsprite = 19
+    }
+    if (Deffect === 17) {
+        maxsprite = 15
+    }
+    if (Deffect === 18) {
+        maxsprite = 23
+    }
+    if (Deffect === 19) {
+        maxsprite = 13
+    }
+
+//    console.log('Sprite Maximum: ' + maxsprite);
+//    console.log('Death Sprite Sheet: ' + Deffect);
+    function death() {
+        setInterval(() => {
+            spritenum++
+            console.log(mxSprite[Deffect])
+            document.getElementById('player').src = "MiscSheets/PlayerExplosion_" + Deffect + "-hd/" + spritenum + ".png";
+            if (spritenum === maxsprite) {
+                //location.reload();
+                y = -660;
+                x = -20;
+                xV = 15;
+                yV = 1; //y - Velocity
+                g = -2.6; 
+                document.getElementById('player').src = "style/robtop.png";
+            }
+        },900)
+    }-->

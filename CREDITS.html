@@ -1,0 +1,122 @@
+<style>
+@font-face { 
+    font-family: 'Pusab'; 
+    src: url('style/Pusab.ttf') format('truetype'); 
+    font-weight: normal; 
+    font-style: normal; 
+ } 
+#corner {
+    position: fixed;
+    width: 20vh;
+    height: 20vh;
+    top:80%;
+    left:0px;
+}
+#corner1 {
+    position: fixed;
+    width: 20vh;
+    height: 20vh;
+    top:80%;
+    left:90%;
+    transform: rotate(270deg);
+}
+#corner2 {
+    position: fixed;
+    width: 20vh;
+    height: 20vh;
+    top:0%;
+    left:0%;
+    transform: rotate(90deg);
+}
+#corner3 {
+    position: fixed;
+    width: 20vh;
+    height: 20vh;
+    top:0%;
+    left:90%;
+    transform: rotate(180deg);
+}
+
+body {
+    background-image: url("style/bggd.jpg");
+    position: fixed;
+    background-position-y: 20% 
+}
+a {
+    color:gold;
+    text-decoration: none;
+}
+pre {
+    position: fixed;
+    font-family: 'Pusab';
+    color:white;
+    font-size:50pt;
+    -webkit-text-stroke-width: 2.9px;
+    text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3); 
+    -webkit-text-stroke-color: black;
+}
+
+div {
+    border-width: 2.5vh;
+    border-style: solid;
+    border-radius: 3vh;
+    background-color: #995533;
+    border-image: url('style/brownbox.png') 10% round;
+    text-align: left;
+    max-width: 100%;
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%,-50%);
+    width: 135vh; 
+    height: 82%; 
+    margin-top: -0.25%;
+}
+
+#closewin {
+    position:fixed;
+    top: -1%; 
+    left: -1%; 
+    transform: translate(-50%,-50%);
+    width: 100px;
+    height: 100px;
+    z-index: 1000;
+}
+#mod {
+    position:fixed;
+    width: 60px;
+}
+</style>
+<title>GD Level Loader</title>
+<link rel="icon" type="image/x-icon" href="style/communityCreditsBtn_001.png">
+<!--- Whoops I accedentally found the ® symbol -->
+<body style="background-color: blue;">
+<img id="corner" src="style/corner.png">
+<img id="corner1" src="style/corner.png">
+<img id="corner2" src="style/corner.png">
+<img id="corner3" src="style/corner.png">
+
+
+<div class="brownBox">
+<img id="closewin" onclick="closeit()" src="style/GJ_closeBtn_001.png">
+<pre>
+<a target="_blank" href="https://www.youtube.com/@RobTopGames"><img id="mod" src="style/modBadge_02_001.png">  RobTop</a>: ALL ASSETS
+<a target="_blank" href="https://www.youtube.com/@OLIVER427">OLIVER427</a>: idk something
+<a target="_blank" href="https://gdbrowser.com/u/blockhead66">Blockhead66</a>: Data Reader
+and almost everything else
+</pre>
+</div>
+</body>
+<script>
+    var closebtn = document.getElementById('closewin')
+    function closeit() {
+    closebtn.style.width = "110px";
+    closebtn.style.height = "110px";
+    setTimeout(() => {
+        closebtn.style.width = "100px";
+        closebtn.style.height = "100px";
+        document.location.href=('index.html');
+    }, 100);
+    
+}
+</script>
