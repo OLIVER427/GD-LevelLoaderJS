@@ -21,9 +21,21 @@
     background-position:0px;
     z-index:-101;
 }
+#back {
+    position: fixed;
+    width: 100px;
+    height: auto;
+    top:10%;
+    left:5%;
+    transform: translate(-50%, -50%);
+    z-index: 9999999999999999999;
+    opacity: 0.5;
+    transition-duration: 200ms;
+}#back:active{width: 110px;} #back:hover{cursor: pointer;opacity: 1;transition-duration: 200ms;} 
 </style>
 <title>Cant Let Go</title>
 <link rel="icon" href="../style/diffIcon_03_btn_001.png">
+<img id="back" onclick="document.location.href=('../LevelSelect.html');" src="../style/backArrowPlain_01_001.png">
 
     
     

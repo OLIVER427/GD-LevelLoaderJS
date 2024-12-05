@@ -24,11 +24,11 @@
 #back {
     position: fixed;
     width: 100px;
-    height: 132px;
+    height: auto;
     top:10%;
     left:5%;
     transform: translate(-50%, -50%);
-}
+}#back:active{width: 110px;} #back:hover{cursor: pointer;} 
 
 #pusabtxt {
     font-family: 'Pusab';
@@ -158,7 +158,7 @@
 
 <img id="corner" src="style/corner.png">
 <img id="corner1" src="style/corner.png">
-<img id="back" onclick="back()" src="style/GJ_arrow_01_001.png">
+<img id="back" onclick="document.location.href=('index.html');" src="style/GJ_arrow_01_001.png">
 <img id="topbar" src="style/GJ_topBar_001.png">
 
 

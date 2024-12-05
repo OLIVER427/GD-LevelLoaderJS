@@ -52,19 +52,19 @@
     position: fixed;
     transform: translate(-50%,-50%);
     width: 300px;
-    height: 300px;
+    height: auto;
     top:50%;
     left:50%;
     transition:20ms;
 }
 #playbtn:hover {
     cursor: pointer;
-}
+}#playbtn:active{width: 320px}
 
 #buygd {
     position: fixed;
     transform: translate(-50%,-50%);
-    width: 236px;
+    width: auto;
     height: 210px;
     top:50%;
     left:25%;
@@ -72,20 +72,20 @@
 }
 #buygd:hover {
     cursor: pointer;
-}
+}#buygd:active{height: 220px;}
 
 #editor {
     position: fixed;
     transform: translate(-50%,-50%);
     width: 210px;
-    height: 210px;
+    height: auto;
     top:50%;
     left:75%;
     transition:20ms;
 }
 #editor:hover {
     cursor: pointer;
-}
+}#editor:active{width: 220px;}
 
 #title1 {
     position: fixed;
@@ -125,28 +125,6 @@ pre {
     text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3); 
     -webkit-text-stroke-color: black;
 }
-#credit {
-    width: 131px;
-    height: 131px;
-    position: fixed;
-    top: 90%;
-    left: 55%;
-    transform: translate(-50%,-50%);
-}
-#credit:hover {
-    cursor: pointer;
-}
-#saved {
-    width: 120px;
-    height: 120px;
-    position: fixed;
-    top: 90%;
-    left: 45%;
-    transform: translate(-50%,-50%);
-}
-#saved:hover {
-    cursor: pointer;
-}
 #chkbx {
     width: 80px;
     height: 80px;
@@ -158,10 +136,9 @@ pre {
 #chkbx:hover {
     cursor: pointer;
 }
-
 #ytbtn {
     width: 80px;
-    height: 80px;
+    height: auto;
     position: fixed;
     top: 92%;
     left: 12%;
@@ -169,7 +146,41 @@ pre {
 }
 #ytbtn:hover {
     cursor: pointer;
+}#ytbtn:active{width: 85px;}
+#credit {
+    width: 131px;
+    height: auto;
+    position: fixed;
+    top: 90%;
+    left: 60%;
+    transform: translate(-50%,-50%);
+    scale: 1
 }
+#credit:hover {
+    cursor: pointer;
+}#credit:active{width: 136px;}
+#saved {
+    width: 120px;
+    height: auto;
+    position: fixed;
+    top: 90%;
+    left: 40%;
+    transform: translate(-50%,-50%);
+}
+#saved:hover {
+    cursor: pointer;
+}#saved:active{width: 125px;}
+#helpbtn {
+    width: 120px;
+    height: auto;
+    position: fixed;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+#helpbtn:hover {
+    cursor: pointer;
+}#helpbtn:active{width: 125px;}
 </style>
 <title>GD Level Loader</title>
 <link rel="icon" type="image/x-icon" href="Blocks/1329.png">
@@ -186,24 +197,19 @@ pre {
 <img id="title1" src="style/GJ_logo_001.png">
 <img id="title2" src="style/logo2.png">
 
-<img id="playbtn" onclick="play()" src="style/GJ_playBtn_001.png">
-<img id="buygd" onclick="fullver()" src="style/GJ_fullBtn_001.png">
-<img id="editor" onclick="edit()" src="style/GJ_creatorBtn_001.png">
+<img id="playbtn" onclick="document.location.href=('LevelSelect.html')" src="style/GJ_playBtn_001.png">
+<img id="buygd" onclick="window.open('https:\/\/store.steampowered.com/app/322170/Geometry_Dash/','_blank');" src="style/GJ_fullBtn_001.png">
+<img id="editor" onclick="document.location.href=('LevelViewer.html');" src="style/GJ_creatorBtn_001.png">
 
-<img id="credit" onclick="credits()" src="style/communityCreditsBtn_001.png"> 
-<img id="saved" onclick="savedlvl()" src="style/GJ_RndSavedBtn_001.png">
+<img id="credit" onclick="document.location.href=('CREDITS.html');" src="style/communityCreditsBtn_001.png"> 
+<img id="saved" onclick="alert('You cant save levels yet, but thanks for trying!');" src="style/GJ_RndSavedBtn_001.png">
 <p id="hdncheck"><img id="chkbx" onclick="toggleonbg()" src="style/GJ_checkOff_001.png"></p>
-<img id="ytbtn" onclick="youtube()" src="style/gj_ytIcon_001.png">
+<img id="ytbtn" onclick="window.open('https:\/\/www.youtube.com/@OLIVER427','_blank');" src="style/gj_ytIcon_001.png">
+<img id="helpbtn" onclick="window.open('https:\/\/github.com/OLIVER427/GD-LevelLoaderJS/blob/main/README.md','_blank');" src="style/GJ_helpBtn_001.png">
 
 </body>
 <script>
 var sitetitle = document.getElementById('title2');
-var playbtn = document.getElementById('playbtn');
-var buybtn = document.getElementById('buygd');
-var editbtn = document.getElementById('editor');
-
-var creditbtn = document.getElementById('credit');
-var savebtn = document.getElementById('saved');
 
 var titlecolor = 100;
 var titlesat = 100;
@@ -213,7 +219,6 @@ var bgImage = document.getElementById('movebg');
 var chkboxx = document.getElementById('chkbx');
 var chkboxcont = document.getElementById('hdncheck');
 var menutheme = new Audio('audio/Geometry-Dash-Menu-Theme.mp3');
-var yt = document.getElementById('ytbtn');
 menutheme.loop = true;
 //Reset Cookie Code (DO NOT TOUCH) 
 //document.cookie = "bg=false; expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/; SameSite=none";
@@ -270,70 +275,6 @@ function randomIntFromInterval(min, max) { // min and max included
         }
          titlesat = randomIntFromInterval(125, 150)
          sitetitle.style.filter =  "hue-rotate(" + titlecolor + "deg)"+ " saturate(" + titlesat + "%)" + " brightness(200%)";
-
-         
-function play() {
-    playbtn.style.width = "320px";
-    playbtn.style.height = "320px";
-    setTimeout(() => {
-        playbtn.style.width = "300px";
-        playbtn.style.height = "300px";
-        document.location.href=('LevelSelect.html');
-    }, 100);
-    
-}
-
-function edit() {
-    editbtn.style.width = "220px";
-    editbtn.style.height = "220px";
-    setTimeout(() => {
-        editbtn.style.width = "210px";
-        editbtn.style.height = "210px";
-        document.location.href=('LevelViewer.html');
-    }, 100);
-    
-}
-function fullver() {
-    buybtn.style.width = "256px";
-    buybtn.style.height = "230px";
-    setTimeout(() => {
-        window.open('https://store.steampowered.com/app/322170/Geometry_Dash/','_blank');
-        buybtn.style.width = "236px";
-        buybtn.style.height = "210px";
-    }, 80);
-    
-}
-
-function credits() {
-    creditbtn.style.width = "141px";
-    creditbtn.style.height = "141px";
-    setTimeout(() => {
-        creditbtn.style.width = "121px";
-        creditbtn.style.height = "121px";
-        document.location.href=('CREDITS.html');
-    }, 100);
-    
-}
-
-function savedlvl() {
-    savebtn.style.width = "130px";
-    savebtn.style.height = "130px";
-    setTimeout(() => {
-        savebtn.style.width = "120px";
-        savebtn.style.height = "120px";
-        alert('You cant save levels yet, but thanks for trying!');
-    }, 100);
-}
-
-function youtube() {
-    yt.style.width = "90px";
-    yt.style.height = "90px";
-    setTimeout(() => {
-        yt.style.width = "80px";
-        yt.style.height = "80px";
-        window.open('https://www.youtube.com/@OLIVER427','_blank');
-    }, 100);
-}
 
 document.addEventListener('keydown', function(keys) {
 

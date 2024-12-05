@@ -93,7 +93,7 @@ function loadData() {
 	//mac and chromebook xV is 15.9
 	//windows xV is 14.5
     //turns out this is probably based on how much fps you get... good luck!
-    let xV = 15.9;
+    let xV = 13;
     let yV = 1; //y - Velocity
     let g = 2.53;
     let r = 0;
@@ -291,7 +291,6 @@ if (levelData == StereoMadness) { // edit like a year later: Clearly "temporary"
 } if (levelData == Xstep) {
     var lvlsong = new Audio('audio/xStep.mp3');
 } 
-
 setTimeout(() => {
     loadData()
     setTimeout(() => {

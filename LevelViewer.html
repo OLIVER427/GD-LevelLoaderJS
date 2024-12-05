@@ -3,12 +3,12 @@
 #back {
     position: fixed;
     width: 100px;
-    height: 132px;
+    height: auto;
     top:15%;
     left:5%;
     transform: translate(-50%, -50%);
     z-index: 999999999999999999999999999999999999999999;
-}
+}#back:active{width: 110px;} #back:hover{cursor: pointer;} 
 #levelContainer img{
     position: absolute;
     width: 70px;
@@ -30,7 +30,7 @@
     transition-duration: 300ms;
 }
 </style>
-<img id="back" onclick="back()" src="style/GJ_arrow_01_001.png">
+<img id="back" onclick="document.location.href=('index.html');" src="style/GJ_arrow_01_001.png">
 <body style="overflow: scroll;width:9999999999999999999999999999999999999999999999999999999999999999999999999999999999999px;background-color: #6941ef;">
     <div>
         <input  id="dataInput" style="width: 87vw;" placeholder=" insert data here...">
@@ -55,15 +55,6 @@ console.log() // CALCULATOR
 //c = blockValue[6]
 //dir = blockValue[7] 
 //THIS HAS NOW BEEN PROVED TO BE PARTIALLY FALSE. USE THE UPDATED VERSION (COMING SOON)
-function back() {
-    document.getElementById('back').style.width = "110px";
-    document.getElementById('back').style.height = "142px";
-    setTimeout(() => {
-        document.getElementById('back').style.width = "100px";
-        document.getElementById('back').style.height = "132px";
-        document.location.href=('index.html');
-    }, 100);
-}
 
 let levelData
 function loadData() {
