@@ -3,7 +3,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/OLIVER427/GD-LevelLoaderJS)
 ![GitHub Repo stars](https://img.shields.io/github/stars/OLIVER427/GD-LevelLoaderJS)
 ![GitHub forks](https://img.shields.io/github/forks/OLIVER427/GD-LevelLoaderJS)
-###### this is an old project that I am just now modifying to put on github, we will probably not be able to fix any issues you have with the site. This code is from a long time ago and it is very unorganized and inefficient. You have been warned.
+###### this is an old project that I am just now modifying to put on github, we will probably not be able to fix any issues you have with the site. This code is from a long time ago and it is very unorganized and inefficient, and I cannot guarantee that it will work on all devices. You have been warned.
 
 # Geometry Dash Level Loader
 
@@ -18,6 +18,8 @@ var test = "kS38,1_255_2_0_3_0_4_-1_6_1000_7_1|1_255_2_153_3_0_4_-1_6_1001_7_1|1
 The example loads in my testing level for messing with the orbs, portals, gravity, pads, etc. (keep in mind that this will be a VERY long variable.)
 
 Make sure that your level has over 100 objects in it, because otherwise the site will just lag out a lot, and then crash.
+
+I will probably make a built in custom level player eventually, but its not a top priority so you have to git clone this to actually play your custom levels. You cant just download the zip file because otherwise none of the images work, which I assume is because I am using [git-lfs](https://git-lfs.com/) to handle all the images I have here
 
 ## What is wrong with this thing!??!
 Well, a lot. I helped make this with [BlockHead66](https://github.com/Blockhead66), when we had a lot less knowledge of Javascript and CSS, so I made some dumb mistakes and just ignored things that could have been WAY more efficient. I also have to individually grab each image file from a spritesheet (using GDColon's [Spritesheet Splitter](https://gdcolon.com/gdsplitter/)) so not every block and their functions are in the site.

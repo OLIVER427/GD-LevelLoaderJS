@@ -12,7 +12,7 @@
 .bg{
     filter: /*sepia(100%) saturate(1000%) brightness(70%) hue-rotate(180deg)*/ opacity(35%);
     position:fixed;
-    top:0;
+    bottom:0;
     left:0;
     background:url('../style/bg.png');
     width:100vw;
@@ -33,15 +33,15 @@
     transition-duration: 200ms;
 }#back:active{width: 110px;} #back:hover{cursor: pointer;opacity: 1;transition-duration: 200ms;} 
 </style>
-<title>Dry Out</title>
-<link rel="icon" href="../style/diffIcon_03_btn_001.png">
+<title>Debug Level!</title>
+<link rel="icon" href="../style/gjItem_19_001.png">
 <img id="back" onclick="document.location.href=('../LevelSelect.html');" src="../style/backArrowPlain_01_001.png">
 
     
     
     
     
-<body style="background-color:rgb(191, 0, 0)">
+<body style="background-color:blue">
     <div class="bg" id="bg">
     </div>
     <div id ="levelContainer" style="overflow: hidden;height: 10000px;">
@@ -51,13 +51,12 @@
 <!--<canvas id="canvas" style="background-color: red; position: absolute; width: 100000px; height: 10000px;border:1px solid #d3d3d3; bottom: -650px; z-index: -100"></canvas>--->
 </body>
 </html> 
-
 <!-- Grabbing our levels here-->
 <script src="../javascript/funlevels.js" ></script>
 <script src="../javascript/levels.js" ></script>
 <script src="../javascript/testlevels.js" ></script>
 <script src="../javascript/blockPresets.js" ></script>
 <script>
-    let levelData = DryOut;
+    let levelData = DebugLevel;
 </script>
 <script src="../javascript/ActualLoader.js"></script>

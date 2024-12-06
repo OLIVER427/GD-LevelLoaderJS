@@ -93,7 +93,7 @@ function loadData() {
 	//mac and chromebook xV is 15.9
 	//windows xV is 14.5
     //turns out this is probably based on how much fps you get... good luck!
-    let xV = 13;
+    let xV = 15.9;
     let yV = 1; //y - Velocity
     let g = 2.53;
     let r = 0;
@@ -189,7 +189,7 @@ function loadData() {
                     plyrMech = 'ship';
                     r = 0;
                     g = 0.9;
-                    document.getElementById('player').src = "../icons/ship0.5.png";
+                    document.getElementById('player').src = "../icons/ship1.5.png";
 
                 }
                 if(coll.map((elm)=> elm[0][1]).includes('47')){ // Ball Portal
