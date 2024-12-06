@@ -3,11 +3,11 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/OLIVER427/GD-LevelLoaderJS)
 ![GitHub Repo stars](https://img.shields.io/github/stars/OLIVER427/GD-LevelLoaderJS)
 ![GitHub forks](https://img.shields.io/github/forks/OLIVER427/GD-LevelLoaderJS)
-###### this is an old project that I am just now modifying to put on github, we will probably not be able to fix any issues you have with the site. This code is from a long time ago and it is very unorganized and inefficient, and I cannot guarantee that it will work on all devices. You have been warned.
+###### this is an old project that I am just now modifying to put on github, we will probably not be able to fix any issues you have with the site. Most of this code is from a long time ago and it is very unorganized and inefficient, and I cannot guarantee that it will work on all devices. You have been warned.
 
 # Geometry Dash Level Loader
 
-A very laggy mess, but a recreation of Geometry Dash, made in pure Javascript, HTML, and CSS. So far, we have a (mostly) functioning cube gamemode, and a partially working ship gamemode, along with a really broken ball gamemode. I am releasing this to the public on December 19th, 2024.
+A very laggy mess, but a recreation of Geometry Dash, made in pure Javascript, HTML, and CSS. So far, we have a (mostly) functioning cube gamemode, and a partially working ship gamemode, along with a really broken ball gamemode.
 
 ## Well, how can I make a level?
 You can use GDColon's [Spreadsheet Editor](https://gdcolon.com/gdsheet), and paste your level data into the Level Viewer (through the editor button on the title screen). Then you can paste the level data in as a variable in one of the existing javascript files, which should look something like this:
