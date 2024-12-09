@@ -1,8 +1,8 @@
-var page = document.getElementById('html');
+var page = document.getElementById('html'); // BE WARNED!!! REALLY WEIRD CODE UP AHEAD!!
 var fileName = location.href
 //page.requestFullscreen();                       LEVEL DATA REF
                                                 //\\\\\\\///////////
-                                                //let levelData = StereoMadness;//
+                                                //let levelData = StereoMadness;// not anymore! making this work will break it!
                                                 /////////\\\\\\\\\\\\
 let bgImage = document.getElementById('bg');
 
@@ -46,7 +46,7 @@ function loadData() {
         sBVal.src = "../Blocks/" + blockData[a][1] + ".png"; //set srcs img
         //user coin coin coin coin fire in the hole
         for (let i = 0; i < mainLvls.length; i++) {
-            console.log(i + mainLvls[i])
+            //console.log(i + mainLvls[i])
         if (blockData[a][1] == 1329 && String(fileName).includes(mainLvls[i])){
             sBVal.src = "../Blocks/SecretCoin.gif";
         }else if (blockData[a][1] == 1329) {
@@ -108,9 +108,17 @@ function loadData() {
     setTimeout(function(){
 
         //button detection
-        window.addEventListener("keydown", (e)=>{if(e.which === 32 || e.which === 87 || e.which === 38){btnD = 1; clckT = 1}}); //detect when keys are pressed.
-        window.addEventListener("keyup", (e)=>{if(e.which === 32 || e.which === 87 || e.which === 38){btnD = 0;}});
-        
+        window.addEventListener("keydown", (e)=>{if(e.which === 32 || e.which === 87 || e.which === 38 || e.which === 1){btnD = 1; clckT = 1}}); //detect when keys are pressed.
+        window.addEventListener("keyup", (e)=>{if(e.which === 32 || e.which === 87 || e.which === 38 || e.which === 1){btnD = 0;}});
+
+        window.addEventListener("mousedown", (e)=>{btnD = 1; clckT = 1});
+        window.addEventListener("mouseup", (e)=>{btnD = 0;});
+        if (page.onmousedown) {
+            console.log("MOUSE IS DOWN!!!")
+        }
+        if (page.onmouseup) {
+            console.log("MOUSE IS UP!!!")
+        }
         setInterval(() =>{
             //console.log(`y velocity: ${yV}, y position ${y}, gdir: ${gDir}`)
 //CUBE MECH

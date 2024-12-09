@@ -3,45 +3,11 @@
 <html id="html" style="overflow: hidden">
 
 <!-- imgs to edit (Id):18,19,20,21,39,45-60,99,100,106,107,129,130-->
-<style>
-#levelContainer img{
-    position: absolute;
-    width: 70px;
-    max-height: 300px;
-}
-.bg{
-    filter: /*sepia(100%) saturate(1000%) brightness(70%) hue-rotate(180deg)*/ opacity(35%);
-    position:fixed;
-    top:0;
-    left:0;
-    background:url('../style/bg.png');
-    width:100vw;
-    height:100vh;
-    background-size:100% auto;
-    background-position:0px;
-    z-index:-101;
-}
-#back {
-    position: fixed;
-    width: 100px;
-    height: auto;
-    top:10%;
-    left:5%;
-    transform: translate(-50%, -50%);
-    z-index: 9999999999999999999;
-    opacity: 0.5;
-    transition-duration: 200ms;
-}#back:active{width: 110px;} #back:hover{cursor: pointer;opacity: 1;transition-duration: 200ms;} 
-</style>
-<title>Dry Out</title>
-<link rel="icon" href="../style/diffIcon_03_btn_001.png">
+<link rel="stylesheet" href="../levels.css">
+<title>Back On Track</title>
+<link rel="icon" href="../style/diffIcon_01_btn_001.png">
 <img id="back" onclick="document.location.href=('../LevelSelect.html');" src="../style/backArrowPlain_01_001.png">
-
-    
-    
-    
-    
-<body style="background-color:rgb(191, 0, 0)">
+<body style="background-color:rgb(182, 0, 130)">
     <div class="bg" id="bg">
     </div>
     <div id ="levelContainer" style="overflow: hidden;height: 10000px;">
@@ -58,6 +24,6 @@
 <script src="../javascript/testlevels.js" ></script>
 <script src="../javascript/blockPresets.js" ></script>
 <script>
-    let levelData = DryOut;
+    let levelData = BackOnTrack;
 </script>
 <script src="../javascript/ActualLoader.js"></script>
