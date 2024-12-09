@@ -34,7 +34,7 @@ function loadData() {
     //load imgs
     let a = 1;
     while(a < blockData.length){ //This while loop repeats it for every block                    This over here is a fun random rotation value thing. try it sometime
-        let props = 'left:' + blockData[a][3] *2.3333 + 'px;bottom:' + (blockData[a][5]-300) *2.3333 + 'px;'; //+ ' transform:rotate(' + blockValue[5] +'deg)';
+        let props = 'left:' + blockData[a][3] *2.3333 + 'px;bottom:' + (blockData[a][5]-300) *2.3333 + 'px;' //+ ' transform:rotate(' + blockValue[5] +'deg)';
         let i = 7; //starts at 7 to skip sections of data (id, xPos, yPos)
         while(i < blockData[a].length){//tuning the props variable.
             let key = blockData[a][i-1];

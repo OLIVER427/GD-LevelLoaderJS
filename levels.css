@@ -1,4 +1,4 @@
-#levelContainer img{
+#levelContainer > img{
     position: absolute;
     width: 70px;
     max-height: 300px;

@@ -45,7 +45,7 @@ let spikePresets = {'8':[0.33, 0.25],
                     '9':[1, 0.5],
                     '39':[0.5, 0.5],
                     }
-//[Id, width Ratio, height Ratio]
+// 'Id': [width Ratio, height Ratio]
 let specialPresets = {
                     //Portals
                     '13': [2, 3],
