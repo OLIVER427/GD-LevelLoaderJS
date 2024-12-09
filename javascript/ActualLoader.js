@@ -1,4 +1,5 @@
 var page = document.getElementById('html');
+var fileName = location.href
 //page.requestFullscreen();                       LEVEL DATA REF
                                                 //\\\\\\\///////////
                                                 //let levelData = StereoMadness;//
@@ -23,7 +24,7 @@ function loadData() {
     let collData = blockData.slice(1).map((elm) => Object.keys(blockPresets).includes(elm[1]) ? [elm,'b'] : (Object.keys(spikePresets).includes(elm[1]) ? [elm,'s']: Object.keys(specialPresets).includes(elm[1]) ? [elm,'p']: '')).filter(String);
     let bDims = Object.assign(blockPresets, spikePresets, specialPresets);
     let sBVal = document.createElement("img"); //setBlockValue
-    
+    let mainLvls = ["StereoMadness","BackOnTrack","Polargeist","DryOut","BaseAfterBase","CantLetGo","Jumper","TimeMachine"/*,"DebugLevel"*/]
     //canvas setup
     //let c = document.getElementById('canvas')
     //let ctx = document.getElementById('canvas').getContext('2d')
@@ -44,13 +45,18 @@ function loadData() {
         };
         sBVal.src = "../Blocks/" + blockData[a][1] + ".png"; //set srcs img
         //user coin coin coin coin fire in the hole
-        if (blockData[a][1] == 1329) {
-            sBVal.src = "../Blocks/1329.gif"; //set srcs img
+        for (let i = 0; i < mainLvls.length; i++) {
+            console.log(i + mainLvls[i])
+        if (blockData[a][1] == 1329 && String(fileName).includes(mainLvls[i])){
+            sBVal.src = "../Blocks/SecretCoin.gif";
+        }else if (blockData[a][1] == 1329) {
+            sBVal.src = "../Blocks/UserCoin.gif"; //set srcs img
         } else {
             //heheheeheifworgbefjsdnkvjbgrueoiwfnkjdsbgeoruiewjfp
             //turn line of code below into/out of a comment to disable/enable the lobotomy
             //sBVal.src = "../Blocks/3854.png";
         }
+    }
         sBVal.style.cssText = props; //gives block the property
         document.getElementById("levelContainer").appendChild(sBVal.cloneNode(true)); //*spawns elem*
         a++; //next block!
