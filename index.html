@@ -235,7 +235,7 @@ var chkboxx = document.getElementById('chkbx');
 var chkboxcont = document.getElementById('hdncheck');
 var menutheme = new Audio('audio/Geometry-Dash-Menu-Theme.mp3');
 menutheme.loop = true;
-//Reset Cookie Code (DO NOT TOUCH) 
+//Reset Cookie Code
 //document.cookie = "bg=false; expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/; SameSite=none";
 //document.cookie = "bg=true; expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/; SameSite=none";
 
@@ -243,7 +243,6 @@ menutheme.loop = true;
 function checkCookie() {
 if (document.cookie == "") {
     document.cookie = "bg=true; expires= Wed,01 Jan, 3000 12:00:00 UTC; path=/; SameSite=None";
-    
 }
 if (document.cookie == "bg=true") {
     toggleonbg();

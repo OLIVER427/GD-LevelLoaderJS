@@ -24,7 +24,7 @@ function loadData() {
     let collData = blockData.slice(1).map((elm) => Object.keys(blockPresets).includes(elm[1]) ? [elm,'b'] : (Object.keys(spikePresets).includes(elm[1]) ? [elm,'s']: Object.keys(specialPresets).includes(elm[1]) ? [elm,'p']: '')).filter(String);
     let bDims = Object.assign(blockPresets, spikePresets, specialPresets);
     let sBVal = document.createElement("img"); //setBlockValue
-    let mainLvls = ["StereoMadness","BackOnTrack","Polargeist","DryOut","BaseAfterBase","CantLetGo","Jumper","TimeMachine"/*,"DebugLevel"*/]
+    let mainLvls = ["StereoMadness","BackOnTrack","Polargeist","DryOut","BaseAfterBase","CantLetGo","Jumper","TimeMachine","DebugLevel"]
     //canvas setup
     //let c = document.getElementById('canvas')
     //let ctx = document.getElementById('canvas').getContext('2d')
@@ -48,7 +48,7 @@ function loadData() {
         for (let i = 0; i < mainLvls.length; i++) {
             //console.log(i + mainLvls[i])
         if (blockData[a][1] == 1329 && String(fileName).includes(mainLvls[i])){
-            sBVal.src = "../Blocks/SecretCoin.gif";
+            sBVal.src = "../Blocks/SecretCoinTransparent.gif";
         }else if (blockData[a][1] == 1329) {
             sBVal.src = "../Blocks/UserCoin.gif"; //set srcs img
         } else {
@@ -56,34 +56,43 @@ function loadData() {
             //turn line of code below into/out of a comment to disable/enable the lobotomy
             //sBVal.src = "../Blocks/3854.png";
         }
-    }
+        }
         sBVal.style.cssText = props; //gives block the property
         document.getElementById("levelContainer").appendChild(sBVal.cloneNode(true)); //*spawns elem*
         a++; //next block!
     };  
         //dfx
             let dfx;
-            let mxFrame = [0,12,10,10,9,10,13,11,11,14,12,12,12,10,14,16,19,15,23,13];
+            let mxFrame = [0,14,12,12,11,12,12,13,13,16,14,14,14,12,16,18,21,16,25,15];
             let frameNum = 1;
             let playDfx;
-    
+            let gameRunning = true
             function death() {
-                dfx = Math.round(Math.random()*18.5 + 1);
+                clearInterval(bgmoving)
+                document.getElementById('player').style.opacity = 0
+                gameRunning = false
+                dfx = Math.round(Math.random()*18 + 1);
                 frameNum = 1;
                 playDfx = setInterval(rnThru, 60)
-                document.getElementById('player').style.transform = 'rotation: 0deg';
+                var diesnd = new Audio('../audio/die.ogg')
+                diesnd.play()
+                document.body.innerHTML += "<img id='deatheffect' style='position:absolute;z-index:999999999999;height:auto;width:400px;transformOrigin: center center; transform: translate(-40%, 40%)'>"
+                document.getElementById('deatheffect').style.bottom = player.style.bottom
+                document.getElementById('deatheffect').style.left = player.style.left
                 function rnThru(){
-                    if (frameNum > mxFrame[dfx]) {
-                        document.getElementById('player').src = '../style/robtop.png';
+                    if (frameNum >= mxFrame[dfx]) {
                         clearInterval(playDfx);
+                        setTimeout(() => {
+                            location.reload()
+                        }, 1000);
                     }else{
-                        document.getElementById('player').style.width = "200px"
-                        document.getElementById('player').src = "../MiscSheets/PlayerExplosion_" + dfx + "-hd/" + frameNum + ".png";
-                        //frameNum++;
+                        
+                        //document.getElementById('player').style.opacity = 1
+                        document.getElementById('deatheffect').src = "../MiscSheets/PlayerExplosion_" + dfx + "-hd/" + frameNum + ".png";
+                        frameNum++;
                     }
                 }
             }
-
     //collision
     let clckT = -1;
     let gDir = -1; //gravity direction
@@ -99,7 +108,7 @@ function loadData() {
 	//mac and chromebook xV is 15.9
 	//windows xV is 14.5
     //turns out this is probably based on how much fps you get... good luck!
-    let xV = 15.9;
+    let xV = 13.5;
     let yV = 1; //y - Velocity
     let g = 2.53;
     let r = 0;
@@ -119,9 +128,10 @@ function loadData() {
         if (page.onmouseup) {
             console.log("MOUSE IS UP!!!")
         }
-        setInterval(() =>{
+        let frameProgess = setInterval(() =>{
             //console.log(`y velocity: ${yV}, y position ${y}, gdir: ${gDir}`)
 //CUBE MECH
+if (gameRunning == true) {
             if(plyrMech == 'cube'){
                 if(btnD == 1){
                     g = 2.53;
@@ -176,9 +186,9 @@ function loadData() {
             collCheck(y);
             //spike collisions
             if(coll.map((elm)=> elm[1]).includes('s')){
-                //death()
+                death()
                 //setTimeout(() => {
-                location.reload()
+                //location.reload()
                 //}, 1000);
             }
             //block collisions    
@@ -273,42 +283,18 @@ function loadData() {
             }
                 
 //update frame:
+            
             document.getElementById('player').style.left = x + 'px'; 
             document.getElementById('player').style.bottom = y + 'px'; 
             document.getElementById('player').style.rotate = r + 'deg';
             if(x>= 350){
                 window.scroll({ top: 750, left: x-350, behavior: 'auto' });
             }
-        },20);
-    }, 20);
+        }
+        },16);
+    }, 16);
 };
 
-//OK OK replace it with an array LATER. this can be temporary
-if (levelData == StereoMadness) { // edit like a year later: Clearly "temporary" means forever cause I'm lazy
-    var lvlsong = new Audio('audio/StereoMadness.mp3');
-}if (levelData == BackOnTrack) {
-    var lvlsong = new Audio('audio/BackOnTrack.mp3');
-} if (levelData == Polargeist) {
-    var lvlsong = new Audio('audio/Polargeist.mp3');
-} if (levelData == DryOut) {
-    var lvlsong = new Audio('audio/DryOut.mp3');
-} if (levelData == BaseAfterBase) {
-    var lvlsong = new Audio('audio/BaseAfterBase.mp3');
-} if (levelData == CantLetGo) {
-    var lvlsong = new Audio('audio/CantLetGo.mp3');
-} if (levelData == Jumper) {
-    var lvlsong = new Audio('audio/Jumper.mp3');
-} if (levelData == TimeMachine) {
-    var lvlsong = new Audio('audio/TimeMachine.mp3');
-} if (levelData == Cycles) {
-    var lvlsong = new Audio('audio/Cycles.mp3');
-} if (levelData == Xstep) {
-    var lvlsong = new Audio('audio/xStep.mp3');
-} 
-setTimeout(() => {
-    loadData()
-    setTimeout(() => {
-    lvlsong.play()
-}, 200);
-}, 100);
-setInterval(movebg,40);
+
+loadData()
+let bgmoving = setInterval(movebg,40);
