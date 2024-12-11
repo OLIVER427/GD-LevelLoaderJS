@@ -48,7 +48,7 @@ function loadData() {
         for (let i = 0; i < mainLvls.length; i++) {
             //console.log(i + mainLvls[i])
         if (blockData[a][1] == 1329 && String(fileName).includes(mainLvls[i])){
-            sBVal.src = "../Blocks/SecretCoinTransparent.gif";
+            sBVal.src = "../Blocks/SecretCoin.gif";
         }else if (blockData[a][1] == 1329) {
             sBVal.src = "../Blocks/UserCoin.gif"; //set srcs img
         } else {
@@ -122,19 +122,14 @@ function loadData() {
 
         window.addEventListener("mousedown", (e)=>{btnD = 1; clckT = 1});
         window.addEventListener("mouseup", (e)=>{btnD = 0;});
-        if (page.onmousedown) {
-            console.log("MOUSE IS DOWN!!!")
-        }
-        if (page.onmouseup) {
-            console.log("MOUSE IS UP!!!")
-        }
         let frameProgess = setInterval(() =>{
             //console.log(`y velocity: ${yV}, y position ${y}, gdir: ${gDir}`)
 //CUBE MECH
 if (gameRunning == true) {
             if(plyrMech == 'cube'){
                 if(btnD == 1){
-                    g = 2.53;
+                    //g = 2.53;
+                    g = 2.32;
                     collCheck(y+2*gDir);
                     yV = coll.map((elm)=> elm[1]).includes('b')? 28*-gDir: yV;//this is where it sets the y velocity
                 }

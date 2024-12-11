@@ -1,4 +1,4 @@
-![Main Logo for GD Level Loader](LogoBanner.png)
+![Main Logo for GD Level Loader](readme-imgs/LogoBanner.png)
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 ![GitHub repo size](https://img.shields.io/github/repo-size/OLIVER427/GD-LevelLoaderJS)
 ![GitHub Repo stars](https://img.shields.io/github/stars/OLIVER427/GD-LevelLoaderJS)
@@ -51,3 +51,22 @@ Well maybe dont play this if you're looking for a smooth experience, but I have 
 - Try not to load a level with too many objects (over maybe 10k), each one is an ``` <img> ``` HTML element, and too many will lag out the site (if you check funlevels.js in the javascript folder you will see that I tried).
 
 - Using the ball gamemode at all is very risky and a similar thing that happens with upside down ship will happen if you try to use the weird glitchy swingcopter ball gamemode that we somehow made.
+
+# No music?
+
+yeah, sorry about that. but there is some menu music! to allow it, you have to enable automatic audio playing on the site, which looks something like this:
+
+## Firefox
+
+![Enable Audio on Firefox](readme-imgs/audiofirefox.png)
+
+## Chrome
+### (it doesnt usually show the slider in the first image, I already had enabled it though)
+
+![Enable Audio on Chrome](readme-imgs/audiochrome1.png)
+### then scroll down until you see this
+![Enable Audio on Chrome](readme-imgs/audiochrome2.png)
+
+## Edge
+
+### I am not opening Edge for this, sorry Edge users

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<head>
+<style>
+body {
+    background: rgb(139,139,139);
+    background: linear-gradient(180deg, rgba(139,139,139,1) 0%, rgba(100,100,100,1) 100%); 
+    height: 100vh;
+    overflow-y: hidden;
+}
+#back {
+    position: fixed;
+    width: 100px;
+    height: auto;
+    top:10%;
+    left:5%;
+    transform: translate(-50%, -50%);
+}#back:active{width: 110px;} #back:hover{cursor: pointer;} 
+#line {
+position: fixed;
+width: 90vw;
+height: 5px;
+background: rgb(255,255,255);
+background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%); 
+transform: translate(-50%, -50%);
+top: 300px;
+left: 50%
+}
+#btnCon {
+position: fixed;
+width: 90vw;
+height: 100px;
+transform: translate(-50%, 0%);
+top: 300px;
+left: 50%;
+/*border: solid 2px white;*/
+display: flex;
+align-items: center;
+justify-content: center;
+}
+#btnCon > img {
+    width: 75px;
+    height: auto;
+    margin: 10px;
+}
+#btnCon > img:hover {
+cursor: pointer;
+}
+
+#cubeSelectionCon {
+visibility: hidden;
+}
+#shipSelectionCon {
+visibility: hidden;
+}
+#dfxSelectionCon {
+visibility: hidden;
+}
+.selectionCon {
+position: fixed;
+width: 80vw;
+height: 18vw;
+transform: translate(-50%, 0%);
+top: 400px;
+left: 50%;
+background-color: rgba(0, 0, 0, 0.4);
+border-radius: 30px;
+display: flex;
+align-items: start;
+justify-content: start;
+flex-wrap: wrap;
+overflow: hidden;
+}
+.selectionCon > img {
+    height: 75px;
+    width: auto;
+    margin: 20px;
+}.selectionCon > img:hover {cursor: pointer;}
+
+#player {
+position: fixed;
+transform: translate(-50%, -102%);
+top: 300px;
+left: 50%;
+}
+</style>
+<title>Customization Options</title>
+<link rel="icon" href="style/GJ_paintBtn_001.png">
+</head>
+<html>
+    <img id="back" onclick="document.location.href=('./');" src="style/GJ_arrow_03_001.png">
+<body>
+<img id="player" src="icons/robtop.png">
+<div id="line"></div>
+
+<div id="btnCon">
+<img id="cubeBtn" src="style/gj_iconBtn_off_001.png" onclick="cubeSelection()">
+<img id="shipBtn" src="style/gj_shipBtn_off_001.png" onclick="shipSelection()">
+<img id="dfxBtn" src="style/gj_explosionBtn_off_001.png" onclick="dfxSelection()">
+</div>
+
+<div class="selectionCon" id="cubeSelectionCon">
+</div>
+
+<div class="selectionCon" id="shipSelectionCon">
+</div>
+
+<div class="selectionCon" id="dfxSelectionCon">
+    <img src="style/explosionIcon_01_001.png">
+    <img src="style/explosionIcon_02_001.png">
+    <img src="style/explosionIcon_03_001.png">
+    <img src="style/explosionIcon_04_001.png">
+    <img src="style/explosionIcon_05_001.png">
+    <img src="style/explosionIcon_06_001.png">
+    <img src="style/explosionIcon_07_001.png">
+    <img src="style/explosionIcon_08_001.png">
+    <img src="style/explosionIcon_09_001.png">
+    <img src="style/explosionIcon_10_001.png">
+    <img src="style/explosionIcon_11_001.png">
+    <img src="style/explosionIcon_12_001.png">
+    <img src="style/explosionIcon_13_001.png">
+    <img src="style/explosionIcon_14_001.png">
+    <img src="style/explosionIcon_15_001.png">
+    <img src="style/explosionIcon_16_001.png">
+    <img src="style/explosionIcon_17_001.png">
+    <img src="style/explosionIcon_18_001.png">
+    <img src="style/explosionIcon_19_001.png">
+</div>
+</body>
+</html>
+
+<script>
+
+var song = new Audio('audio/Customization.mp3')
+song.loop = true;
+song.play()
+
+function revertBtns() {
+document.getElementById('cubeBtn').src ="style/gj_iconBtn_off_001.png"
+document.getElementById('shipBtn').src ="style/gj_shipBtn_off_001.png"
+document.getElementById('dfxBtn').src ="style/gj_explosionBtn_off_001.png"
+document.getElementById('cubeSelectionCon').style.visibility = "hidden"
+document.getElementById('shipSelectionCon').style.visibility = "hidden"
+document.getElementById('dfxSelectionCon').style.visibility = "hidden"
+}
+
+function cubeSelection() {
+    revertBtns()
+document.getElementById('cubeBtn').src ="style/gj_iconBtn_on_001.png"
+document.getElementById('cubeSelectionCon').style.visibility = "visible"
+}
+function shipSelection() {
+    revertBtns()
+document.getElementById('shipBtn').src ="style/gj_shipBtn_on_001.png"
+document.getElementById('shipSelectionCon').style.visibility = "visible"
+}
+function dfxSelection() {
+    revertBtns()
+document.getElementById('dfxBtn').src ="style/gj_explosionBtn_on_001.png"
+document.getElementById('dfxSelectionCon').style.visibility = "visible"
+}
+
+
+dfxSelection()
+</script>

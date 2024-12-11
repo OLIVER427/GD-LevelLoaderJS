@@ -193,7 +193,14 @@ pre {
 #trailerbtn:hover {
     cursor: pointer;
 }#trailerbtn:active{width: 134px;}
-
+#CharBtn {
+    position: fixed;
+    top:-20px;
+    right: 100px;
+    width:100px;
+    transition-duration: 200ms;
+}#CharBtn:hover {cursor: pointer;}
+#CharBtn:active {transition-duration: 200ms; top: -1px}
 </style>
 <title>GD Level Loader</title>
 <link rel="icon" type="image/x-icon" href="Blocks/1329.png">
@@ -209,7 +216,7 @@ pre {
 
 <img id="title1" src="style/GJ_logo_001.png">
 <img id="title2" src="style/logo2.png">
-
+<img id="CharBtn" src="style/garageRope_001.png" onclick="document.location.href=('Customize.html')">
 <img id="playbtn" onclick="document.location.href=('LevelSelect.html')" src="style/GJ_playBtn_001.png">
 <img id="buygd" onclick="window.open('https:\/\/store.steampowered.com/app/322170/Geometry_Dash/','_blank');" src="style/GJ_fullBtn_001.png">
 <img id="editor" onclick="document.location.href=('LevelViewer.html');" src="style/GJ_creatorBtn_001.png">
