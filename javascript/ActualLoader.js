@@ -65,7 +65,7 @@ function loadData() {
             //let CookieString = (document.cookie).split(";")
             //let DfxCookie = toString(CookieString[1]).replace("dfx=", "")
             let dfx;
-            let mxFrame = [0,14,14,12,12,11,12,0,13,12,16,14,14,14,15,16,18,21,16,25,15];
+            let mxFrame = [0,14,14,12,12,11,12,21,13,12,16,14,14,14,15,16,18,21,16,25,15];
             let frameNum = 1;
             let playDfx;
             let gameRunning = true
@@ -97,16 +97,21 @@ function loadData() {
                 document.body.innerHTML += "<img id='deatheffect' style='position:absolute;z-index:999999999999;height:auto;width:400px;transformOrigin: center center; transform: translate(-40%, 40%)'>"
                 document.getElementById('deatheffect').style.bottom = player.style.bottom
                 document.getElementById('deatheffect').style.left = player.style.left
+                let deatheffectid = Number(getCookie('dfx'))
+                if (Number(getCookie('dfx')) == 7) {
+                    deatheffectid = dfx
+                } else {
+                    deatheffectid = Number(getCookie('dfx'))
+                }
                 function rnThru(){
-                    if (frameNum >= mxFrame[Number(getCookie('dfx'))]) {
+                    if (frameNum >= mxFrame[deatheffectid]) {
                         clearInterval(playDfx);
                         setTimeout(() => {
                             location.reload()
                         }, 1000);
                     }else{
-                        
                         //document.getElementById('player').style.opacity = 1
-                        document.getElementById('deatheffect').src = "../MiscSheets/PlayerExplosion_" + Number(getCookie('dfx')) + "-hd/" + frameNum + ".png";
+                        document.getElementById('deatheffect').src = "../MiscSheets/PlayerExplosion_" + deatheffectid + "-hd/" + frameNum + ".png";
                         frameNum++;
                     }
                 }
@@ -231,7 +236,7 @@ if (gameRunning == true) {
                 }
                 if(coll.map((elm)=> elm[0][1]).includes('47')){ // Ball Portal
                     plyrMech = 'ball';
-                    document.getElementById('player').src = "../icons/ball.png";
+                    document.getElementById('player').src = "../icons/ball1.png";
                 }
                 if(coll.map((elm)=> elm[0][1]).includes('11')){
                     gDir = 1;

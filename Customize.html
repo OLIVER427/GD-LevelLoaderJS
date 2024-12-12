@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <head>
 <style>
+@font-face { 
+    font-family: 'Pusab'; 
+    src: url('style/Pusab.ttf') format('truetype'); 
+    font-weight: normal; 
+    font-style: normal; 
+} 
+p {
+    font-family: 'Pusab';
+    color:white;
+    font-size:50pt;
+    -webkit-text-stroke-width: 2.9px;
+    text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3); 
+    -webkit-text-stroke-color: black;
+    align-self: center;
+    justify-self: center;
+    padding-left: 25%;
+}
 body {
     background: rgb(139,139,139);
     background: linear-gradient(180deg, rgba(139,139,139,1) 0%, rgba(100,100,100,1) 100%); 
@@ -68,13 +85,16 @@ display: flex;
 align-items: start;
 justify-content: start;
 flex-wrap: wrap;
-overflow:hidden;
+overflow-x:hidden;
+overflow-y: scroll;
+scrollbar-width: none;
 }
 .selectionCon > img {
     height: 75px;
     width: auto;
     margin: 20px;
     transition-duration: 100ms;
+
 }.selectionCon > img:hover {cursor: pointer;}
 
 .selectionCon > div > img {
@@ -107,6 +127,7 @@ left: 50%;
 </div>
 
 <div class="selectionCon" id="cubeSelectionCon">
+<p>Nothing here yet...</p>
 </div>
 
 <div class="selectionCon" id="shipSelectionCon">
@@ -149,17 +170,21 @@ var song = new Audio('audio/Customization.mp3')
 song.loop = true;
 song.play()
 
-for (let i = 1; i <= 20; i++) {
+for (let i = 1; i <= 21; i++) {
 if (i < 10) {
 if (i == 7) {
-document.getElementById('dfxSelectionCon').innerHTML += "<div><img src='style/GJ_lockGray_001.png' onclick='alert(`sorry, not available right now! or ever...`)'></div>"
+document.getElementById('dfxSelectionCon').innerHTML += "" //"<img onclick='selectDfx(this.id)' id='07' src='style/explosionIcon_random_001.png'>"
 }else {
 document.getElementById('dfxSelectionCon').innerHTML += "<img onclick='selectDfx(this.id)' id='0"+ i +"' src='style/explosionIcon_0"+ i +"_001.png'>"
 }
 
 }
 if (i >= 10) {
+if (i == 21) {
+    document.getElementById('dfxSelectionCon').innerHTML += "<img onclick='selectDfx(this.id)' id='07' src='style/explosionIcon_random_001.png'>"
+}else {
 document.getElementById('dfxSelectionCon').innerHTML += "<img onclick='selectDfx(this.id)' id='"+ i +"' src='style/explosionIcon_"+ i +"_001.png'>"
+}
 }
 
 }
@@ -178,26 +203,65 @@ function revertBtns() {
 document.getElementById('cubeBtn').src ="style/gj_iconBtn_off_001.png"
 document.getElementById('shipBtn').src ="style/gj_shipBtn_off_001.png"
 document.getElementById('dfxBtn').src ="style/gj_explosionBtn_off_001.png"
+document.getElementById('cubeSelectionCon').style.opacity = 0
+document.getElementById('shipSelectionCon').style.opacity = 0
+document.getElementById('dfxSelectionCon').style.opacity = 0
 document.getElementById('cubeSelectionCon').style.visibility = "hidden"
 document.getElementById('shipSelectionCon').style.visibility = "hidden"
 document.getElementById('dfxSelectionCon').style.visibility = "hidden"
+
 }
 
 function cubeSelection() {
     revertBtns()
 document.getElementById('cubeBtn').src ="style/gj_iconBtn_on_001.png"
 document.getElementById('cubeSelectionCon').style.visibility = "visible"
+document.getElementById('cubeSelectionCon').style.opacity = 100
 }
 function shipSelection() {
     revertBtns()
 document.getElementById('shipBtn').src ="style/gj_shipBtn_on_001.png"
 document.getElementById('shipSelectionCon').style.visibility = "visible"
+document.getElementById('shipSelectionCon').style.opacity = 100
 }
 function dfxSelection() {
     revertBtns()
 document.getElementById('dfxBtn').src ="style/gj_explosionBtn_on_001.png"
 document.getElementById('dfxSelectionCon').style.visibility = "visible"
+document.getElementById('dfxSelectionCon').style.opacity = 100
 }
 
 dfxSelection()
+
+
+
+
+
+
+
+function back() {
+    document.getElementById('back').style.width = "110px";
+    document.getElementById('back').style.height = "142px";
+    setTimeout(() => {
+        document.getElementById('back').style.width = "100px";
+        document.getElementById('back').style.height = "132px";
+        document.location.href=('index.html');
+    }, 100);
+}
+document.addEventListener('keydown', function(keys) {
+
+//Key Values:
+// - Spacebar: 32
+// - W: 87
+// - A: 65
+// - S: 83
+// - D: 68
+// - Up: 38
+// - Left: 37
+// - Right: 39
+// - Escape: 27
+if (keys.which == 27) {
+    back();
+}
+})
 </script>
