@@ -19,9 +19,9 @@ kS38,1_255_2_0_3_0_4_-1_6_1000_7_1|1_255_2_153_3_0_4_-1_6_1001_7_1|1_255_2_255_3
 
 Also make sure that your level has over 100 objects in it, because otherwise if you try to play it, the site will just lag out a lot, and then crash.
 
-After loading the level in and looking around for a bit, you can click the "Save File" button, (underneath the load data button) to download the level. You can enter in a custom name, and background color at the prompts, but if you dont, the name will default to ```Untitled Level.html``` and the color will default to Blue. After downloading, make sure to git clone this repo.
+After loading the level in and looking around for a bit, you can click the "Save File" button, (underneath the load data button) to download the level. You can enter in a custom name, and background color at the prompts, but if you dont, the name will default to ```Untitled Level.html``` and the color will default to Blue (after further testing, if you click cancel twice, it just makes them both "Null"). After downloading, make sure to git clone this repo.
 ```
-https://github.com/OLIVER427/GD-LevelLoaderJS.git
+git clone https://github.com/OLIVER427/GD-LevelLoaderJS.git
 ```
 after cloning the repo to a directory of your choice, place your custom level file you downloaded earlier into the Levels folder. Then open your custom level file to play!
 

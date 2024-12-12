@@ -32,6 +32,17 @@
 .dataBtn:hover {
 cursor: pointer;
 }
+#helpbtn {
+    position: fixed;
+    width: 4.5vw;
+    top: 19vh;
+    left:93.5vw;
+    padding: 4px 0 18px 0;
+    transform-origin: center center;
+    transform: translate(-50%, -50%);
+}#helpbtn:hover {
+cursor: pointer;
+}#helpbtn:active{width: 5vw;}
 </style>
 <link rel="icon" href="style/GJ_hammerIcon_001.png">
 <title>Level Data Viewer</title>
@@ -41,7 +52,7 @@ cursor: pointer;
         <input  id="dataInput" class="dataInput" style="width: 87vw;" placeholder=" insert data here...">
         <button class="dataInput dataBtn" style=" width: 9vw; left:89vw; padding: 4px 0 18px 0" onClick="loadData()">Load Data</button>
         <button class="dataInput dataBtn" style=" width: 9vw; top: 7vh;left:89vw; padding: 4px 0 18px 0" onClick="saveData()">Save File</button>
-
+        <img onclick="window.open('https:\/\/github.com/OLIVER427/GD-LevelLoaderJS?tab=readme-ov-file#well-how-can-i-make-a-level','_blank');" src="style/GJ_helpBtn_001.png" id="helpbtn">
     </div>
 <div id="levelContainer">
 </div> 
