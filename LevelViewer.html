@@ -113,6 +113,12 @@ function loadData() {
 function saveData(){
     let customName = prompt("Write a name for your level")
     let customColor = prompt("Choose a background color (blue, green, any hexcode, etc.)")
+    if (customName == "") {
+        customName = "Untitled Level"
+    }
+    if (customColor == "") {
+        customColor = "Blue"
+    }
   //creating the html file
   var content = `
   <!DOCTYPE html>
@@ -156,7 +162,7 @@ function saveData(){
   a.download = file.name;
   a.click();
   window.URL.revokeObjectURL(url);
-  alert('If you havent already, clone this github repository. then you must put your newly downloaded HTML file into the "Levels" folder. then open it to play!')
+  alert('If you haven\'t already, clone this github repository to your local file system. Then you can put your newly downloaded HTML file into the "Levels" folder, and open it to play!')
 } 
 
 
