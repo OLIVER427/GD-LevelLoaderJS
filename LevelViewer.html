@@ -14,7 +14,7 @@
     width: 70px;
     max-height: 300px;
 }
-#dataInput{
+.dataInput{
     position: fixed;
     background-color: #d5d2d5;
     opacity: 50%;
@@ -24,18 +24,24 @@
     z-index: 9999999999;
     transition-duration: 200ms;
 }
-#dataInput:focus{
+.dataInput:focus{
     outline: 3px solid #858285;
     box-shadow: 0px 0px 10px 1px rgb(54, 52, 54);
     transition-duration: 300ms;
 }
+.dataBtn:hover {
+cursor: pointer;
+}
 </style>
+<link rel="icon" href="style/GJ_hammerIcon_001.png">
 <title>Level Data Viewer</title>
 <img id="back" onclick="document.location.href=('index.html');" src="style/GJ_arrow_01_001.png">
 <body style="overflow: scroll;width:9999999999999999999999999999999999999999999999999999999999999999999999999999999999999px;background-color: #6941ef;">
     <div>
-        <input  id="dataInput" style="width: 87vw;" placeholder=" insert data here...">
-        <button id="dataInput" style=" width: 9vw; left:89vw; padding: 4px 0 18px 0" onClick="loadData()">Load Data</button>
+        <input  id="dataInput" class="dataInput" style="width: 87vw;" placeholder=" insert data here...">
+        <button class="dataInput dataBtn" style=" width: 9vw; left:89vw; padding: 4px 0 18px 0" onClick="loadData()">Load Data</button>
+        <button class="dataInput dataBtn" style=" width: 9vw; top: 7vh;left:89vw; padding: 4px 0 18px 0" onClick="saveData()">Save File</button>
+
     </div>
 <div id="levelContainer">
 </div> 
@@ -104,7 +110,55 @@ function loadData() {
     };  
     window.scrollTo(0,1000)
     }
+function saveData(){
+    let customName = prompt("Write a name for your level")
+    let customColor = prompt("Choose a background color (blue, green, any hexcode, etc.)")
+  //creating the html file
+  var content = `
+  <!DOCTYPE html>
+<html id="html" style="overflow: hidden">
+<!-- imgs to edit (Id):18,19,20,21,39,45-60,99,100,106,107,129,130-->
+<link rel="stylesheet" href="../levels.css">
+<title>`+ customName +`</title>
+<link rel="icon" href="../style/GJ_hammerIcon_001.png">
+<img id="back" onclick="document.location.href=('../LevelSelect.html');" src="../style/backArrowPlain_01_001.png">  
+<body style="background-color:`+ customColor +`">
+    <div class="bg" id="bg">
+    </div>
+    <div id ="levelContainer" style="overflow: hidden;height: 10000px;">
+        <!--The imgs go here-->
+    </div>
+<img id="player" src="../icons/robtop.png" style="position: absolute;width: 70px; height: auto;">
+<!--<canvas id="canvas" style="background-color: red; position: absolute; width: 100000px; height: 10000px;border:1px solid #d3d3d3; bottom: -650px; z-index: -100"></canvas>--->
+</body>
+</html>
+<!-- Grabbing our levels here-->
+<script src="../javascript/funlevels.js" ><\/script>
+<script src="../javascript/levels.js" ><\/script>
+<script src="../javascript/testlevels.js" ><\/script>
+<script src="../javascript/blockPresets.js" ><\/script>
+<script>
+    let levelData = "`+ levelData + `";
+<\/script>
+<script src="../javascript/ActualLoader.js"><\/script>
+  `
+
+  //create a file and put the content, name and type
+  var file = new File(["\ufeff"+content], ''+ customName +'.html');
+
+  //create a ObjectURL in order to download the created file
+  url = window.URL.createObjectURL(file);
+
+  //create a hidden link and set the href and click it
+  var a = document.createElement("a");
+  a.style = "display: none";
+  a.href = url;
+  a.download = file.name;
+  a.click();
+  window.URL.revokeObjectURL(url);
+  alert('If you havent already, clone this github repository. then you must put your newly downloaded HTML file into the "Levels" folder. then open it to play!')
+} 
+
+
 document.getElementById('levelContainer').style.zoom = "0.50"
 </script>
-
-
