@@ -286,7 +286,7 @@ function toggleoffbg() {
 }
 
 function movebg(){
-  x1++;
+  x1+=2;
   hue1 += 0.2;
   bgImage.style.backgroundPositionX = "-" + x1 + "px";
   bgImage.style.filter = "sepia(100%) saturate(1000%) brightness(70%) hue-rotate(" + hue1 +"deg)"

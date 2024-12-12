@@ -176,15 +176,15 @@ if (i < 10) {
 if (i == 7) {
 document.getElementById('dfxSelectionCon').innerHTML += "" //"<img onclick='selectDfx(this.id)' id='07' src='style/explosionIcon_random_001.png'>"
 }else {
-document.getElementById('dfxSelectionCon').innerHTML += "<img onclick='selectDfx(this.id)' id='0"+ i +"' src='style/explosionIcon_0"+ i +"_001.png'>"
+document.getElementById('dfxSelectionCon').innerHTML += "<img draggable='false' onclick='selectDfx(this.id)' id='0"+ i +"' src='style/explosionIcon_0"+ i +"_001.png'>"
 }
 
 }
 if (i >= 10) {
 if (i == 21) {
-    document.getElementById('dfxSelectionCon').innerHTML += "<img onclick='selectDfx(this.id)' id='07' src='style/explosionIcon_random_001.png'>"
+    document.getElementById('dfxSelectionCon').innerHTML += "<img draggable='false' onclick='selectDfx(this.id)' id='07' src='style/explosionIcon_random_001.png'>"
 }else {
-document.getElementById('dfxSelectionCon').innerHTML += "<img onclick='selectDfx(this.id)' id='"+ i +"' src='style/explosionIcon_"+ i +"_001.png'>"
+document.getElementById('dfxSelectionCon').innerHTML += "<img draggable='false' onclick='selectDfx(this.id)' id='"+ i +"' src='style/explosionIcon_"+ i +"_001.png'>"
 }
 }
 

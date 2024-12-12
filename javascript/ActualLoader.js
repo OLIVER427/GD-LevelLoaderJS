@@ -1,5 +1,6 @@
 var page = document.getElementById('html'); // BE WARNED!!! REALLY WEIRD CODE UP AHEAD!!
 var fileName = location.href
+//page.innerHTML += "<div style='position:absolute'></div>"
 //page.requestFullscreen();                       LEVEL DATA REF
                                                 //\\\\\\\///////////
                                                 //let levelData = StereoMadness;// not anymore! making this work will break it!
@@ -44,6 +45,7 @@ function loadData() {
         i = i+2; //next property!
         };
         sBVal.src = "../Blocks/" + blockData[a][1] + ".png"; //set srcs img
+        sBVal.draggable = "false"
         //user coin coin coin coin fire in the hole
         for (let i = 0; i < mainLvls.length; i++) {
             //console.log(i + mainLvls[i])
