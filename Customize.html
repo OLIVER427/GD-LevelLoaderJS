@@ -68,13 +68,21 @@ display: flex;
 align-items: start;
 justify-content: start;
 flex-wrap: wrap;
-overflow: hidden;
+overflow:hidden;
 }
 .selectionCon > img {
     height: 75px;
     width: auto;
     margin: 20px;
+    transition-duration: 100ms;
 }.selectionCon > img:hover {cursor: pointer;}
+
+.selectionCon > div > img {
+    height: 75px;
+    width: auto;
+    margin: 20px;
+    transition-duration: 100ms;
+}
 
 #player {
 position: fixed;
@@ -105,34 +113,48 @@ left: 50%;
 </div>
 
 <div class="selectionCon" id="dfxSelectionCon">
-    <img src="style/explosionIcon_01_001.png">
-    <img src="style/explosionIcon_02_001.png">
-    <img src="style/explosionIcon_03_001.png">
-    <img src="style/explosionIcon_04_001.png">
-    <img src="style/explosionIcon_05_001.png">
-    <img src="style/explosionIcon_06_001.png">
-    <img src="style/explosionIcon_07_001.png">
-    <img src="style/explosionIcon_08_001.png">
-    <img src="style/explosionIcon_09_001.png">
-    <img src="style/explosionIcon_10_001.png">
-    <img src="style/explosionIcon_11_001.png">
-    <img src="style/explosionIcon_12_001.png">
-    <img src="style/explosionIcon_13_001.png">
-    <img src="style/explosionIcon_14_001.png">
-    <img src="style/explosionIcon_15_001.png">
-    <img src="style/explosionIcon_16_001.png">
-    <img src="style/explosionIcon_17_001.png">
-    <img src="style/explosionIcon_18_001.png">
-    <img src="style/explosionIcon_19_001.png">
 </div>
 </body>
 </html>
 
 <script>
+if (document.cookie.includes("bg")) {
 
+} else {
+    document.cookie = "bg=true; expires= Wed,01 Jan, 3000 12:00:00 UTC; path=/; SameSite=none; Secure";
+}
+var lastDfx = "01"
+var CookieString = (document.cookie).split(";")
+var dfxCookie = CookieString[1]
+
+
+//alert(CookieString[1])
 var song = new Audio('audio/Customization.mp3')
 song.loop = true;
 song.play()
+
+for (let i = 1; i <= 20; i++) {
+if (i < 10) {
+if (i == 7) {
+document.getElementById('dfxSelectionCon').innerHTML += "<div><img src='style/GJ_lockGray_001.png' onclick='alert(`sorry, not available right now! or ever...`)'></div>"
+}else {
+document.getElementById('dfxSelectionCon').innerHTML += "<img onclick='selectDfx(this.id)' id='0"+ i +"' src='style/explosionIcon_0"+ i +"_001.png'>"
+}
+
+}
+if (i >= 10) {
+document.getElementById('dfxSelectionCon').innerHTML += "<img onclick='selectDfx(this.id)' id='"+ i +"' src='style/explosionIcon_"+ i +"_001.png'>"
+}
+
+}
+
+function selectDfx(effect) {
+    document.getElementById(lastDfx).style.filter = ""
+    document.cookie = "dfx=" + effect + "; expires= Wed,01 Jan, 3000 12:00:00 UTC; path=/; SameSite=None; Secure;";
+    //alert(effect + "   " + dfxCookie)
+    document.getElementById(effect).style.filter = "drop-shadow(0 0 0.75rem gold)"
+    lastDfx = effect
+}
 
 function revertBtns() {
 document.getElementById('cubeBtn').src ="style/gj_iconBtn_off_001.png"
@@ -158,7 +180,6 @@ function dfxSelection() {
 document.getElementById('dfxBtn').src ="style/gj_explosionBtn_on_001.png"
 document.getElementById('dfxSelectionCon').style.visibility = "visible"
 }
-
 
 dfxSelection()
 </script>

@@ -243,19 +243,18 @@ var chkboxcont = document.getElementById('hdncheck');
 var menutheme = new Audio('audio/Geometry-Dash-Menu-Theme.mp3');
 menutheme.loop = true;
 //Reset Cookie Code
-//document.cookie = "bg=false; expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/; SameSite=none";
-//document.cookie = "bg=true; expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/; SameSite=none";
+//document.cookie = "bg=false; expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/; SameSite=none; Secure";
+//document.cookie = "bg=true; expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/; SameSite=none; Secure";
 
 //Cookie Checking. for check mark. Checking cookies Checking Checkmarks. Cheating Cookies checking checkmarks.
 function checkCookie() {
-if (document.cookie == "") {
-    document.cookie = "bg=true; expires= Wed,01 Jan, 3000 12:00:00 UTC; path=/; SameSite=None";
-}
-if (document.cookie == "bg=true") {
+if (document.cookie.includes("bg=true")) {
     toggleonbg();
 }
-if (document.cookie == "bg=false"){
+if (document.cookie.includes("bg=false")){
     toggleoffbg();
+} else {
+    document.cookie = "bg=true; expires= Wed,01 Jan, 3000 12:00:00 UTC; path=/; SameSite=none; Secure";
 }
 }
 

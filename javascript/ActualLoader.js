@@ -62,6 +62,8 @@ function loadData() {
         a++; //next block!
     };  
         //dfx
+            let CookieString = (document.cookie).split(";")
+            let DfxCookie = toString(CookieString[1]).replace("dfx=", "")
             let dfx;
             let mxFrame = [0,14,12,12,11,12,12,13,13,16,14,14,14,12,16,18,21,16,25,15];
             let frameNum = 1;
