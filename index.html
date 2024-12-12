@@ -256,6 +256,14 @@ if (document.cookie.includes("bg=false")){
     toggleoffbg();
 } else {
     document.cookie = "bg=true; expires= Wed,01 Jan, 3000 12:00:00 UTC; path=/; SameSite=none; Secure";
+    toggleonbg();
+}
+
+if (document.cookie.includes("dfx")){
+
+} else {
+    document.cookie = "dfx=01; expires= Wed,01 Jan, 3000 12:00:00 UTC; path=/; SameSite=None; Secure;";
+
 }
 }
 
