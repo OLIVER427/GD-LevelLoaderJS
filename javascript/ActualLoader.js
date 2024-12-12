@@ -62,13 +62,29 @@ function loadData() {
         a++; //next block!
     };  
         //dfx
-            let CookieString = (document.cookie).split(";")
-            let DfxCookie = toString(CookieString[1]).replace("dfx=", "")
+            //let CookieString = (document.cookie).split(";")
+            //let DfxCookie = toString(CookieString[1]).replace("dfx=", "")
             let dfx;
-            let mxFrame = [0,14,12,12,11,12,12,13,13,16,14,14,14,12,16,18,21,16,25,15];
+            let mxFrame = [0,14,14,12,12,11,12,0,13,12,16,14,14,14,15,16,18,21,16,25,15];
             let frameNum = 1;
             let playDfx;
             let gameRunning = true
+            //this is so annoying to do with cookies but heres my source I guess: https://www.w3schools.com/js/js_cookies.asp
+            function getCookie(cname) {
+                let name = cname + "=";
+                let decodedCookie = decodeURIComponent(document.cookie);
+                let ca = decodedCookie.split(';');
+                for(let i = 0; i <ca.length; i++) {
+                  let c = ca[i];
+                  while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                  }
+                  if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                  }
+                }
+                return "";
+              }
             function death() {
                 clearInterval(bgmoving)
                 document.getElementById('player').style.opacity = 0
@@ -82,7 +98,7 @@ function loadData() {
                 document.getElementById('deatheffect').style.bottom = player.style.bottom
                 document.getElementById('deatheffect').style.left = player.style.left
                 function rnThru(){
-                    if (frameNum >= mxFrame[dfx]) {
+                    if (frameNum >= mxFrame[Number(getCookie('dfx'))]) {
                         clearInterval(playDfx);
                         setTimeout(() => {
                             location.reload()
@@ -90,7 +106,7 @@ function loadData() {
                     }else{
                         
                         //document.getElementById('player').style.opacity = 1
-                        document.getElementById('deatheffect').src = "../MiscSheets/PlayerExplosion_" + dfx + "-hd/" + frameNum + ".png";
+                        document.getElementById('deatheffect').src = "../MiscSheets/PlayerExplosion_" + Number(getCookie('dfx')) + "-hd/" + frameNum + ".png";
                         frameNum++;
                     }
                 }

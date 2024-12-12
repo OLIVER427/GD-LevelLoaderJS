@@ -123,10 +123,26 @@ if (document.cookie.includes("bg")) {
 } else {
     document.cookie = "bg=true; expires= Wed,01 Jan, 3000 12:00:00 UTC; path=/; SameSite=none; Secure";
 }
+
 var lastDfx = "01"
 var CookieString = (document.cookie).split(";")
 var dfxCookie = CookieString[1]
-
+function getCookie(cname) {// I stole this function, thanks w3schools!
+                let name = cname + "=";
+                let decodedCookie = decodeURIComponent(document.cookie);
+                let ca = decodedCookie.split(';');
+                for(let i = 0; i <ca.length; i++) {
+                  let c = ca[i];
+                  while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                  }
+                  if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                  }
+                }
+                return "";
+              }
+//alert(getCookie('dfx'))
 
 //alert(CookieString[1])
 var song = new Audio('audio/Customization.mp3')
@@ -147,7 +163,9 @@ document.getElementById('dfxSelectionCon').innerHTML += "<img onclick='selectDfx
 }
 
 }
-
+if (document.cookie.includes('dfx')) {
+    selectDfx(getCookie('dfx'))
+}
 function selectDfx(effect) {
     document.getElementById(lastDfx).style.filter = ""
     document.cookie = "dfx=" + effect + "; expires= Wed,01 Jan, 3000 12:00:00 UTC; path=/; SameSite=None; Secure;";
