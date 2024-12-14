@@ -254,7 +254,7 @@ if (gameRunning == true) {
                 }
                 //yellow pad
                 if(coll.map((elm)=> elm[0][1]).includes('35')){
-                    yV = 35;
+                    yV = 38;
                 }
                 //blue pad
                 if(coll.map((elm)=> elm[0][1]).includes('67')){

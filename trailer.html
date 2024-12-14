@@ -9,6 +9,7 @@
     background-size:10%;
     background-repeat: no-repeat;
     z-index:-1;
+    zoom:0.6
 }
 @font-face { 
     font-family: 'Pusab'; 
@@ -62,6 +63,8 @@
     height:89.5;
     top:21.5%;
     left:50%;
+    opacity: 0;
+    transition-duration: 300ms;
 }
 
 body {
@@ -73,24 +76,25 @@ a {
     color:gold;
     text-decoration: none;
 }
-pre {
+#github {
     position: fixed;
     font-family: 'Pusab';
     color:white;
-    top: 40%;
+    bottom: 15%;
     left: 50%;
     transform: translate(-50%,-50%);
-    font-size:80pt;
+    font-size:70pt;
     -webkit-text-stroke-width: 4.9px;
     text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.3); 
     -webkit-text-stroke-color: black;
+    transition-duration: 600ms;
 }
 </style>
 <title>GD Level Loader</title>
 <link rel="icon" type="image/x-icon" href="Blocks/1329.png">
 <!--- Whoops I accedentally found the ® symbol -->
 <div id="movebg" style="background: url('');"></div>
-<body onload="checkCookie()" style="background-color: blue;">
+<body style="background-color: blue;">
 <!--
 <img id="corner" src="style/rewardCorner_001.png">
 <img id="corner1" src="style/rewardCorner_001.png">
@@ -100,7 +104,7 @@ pre {
 
 <img id="title1" src="style/GJ_logo_001.png">
 <img id="title2" src="style/logo2.png">
-<pre>Out Now on Github!</pre>
+<pre id="github">Out Now on GitHub!</pre>
 </body>
 <script>
 var sitetitle = document.getElementById('title2');
@@ -131,7 +135,7 @@ function toggleonbg() {
 }
 
 function movebg(){
-  x1++;
+  x1+=2;
   hue1 += 0.2;
   bgImage.style.backgroundPositionX = "-" + x1 + "px";
   bgImage.style.filter = "sepia(100%) saturate(1000%) brightness(70%) hue-rotate(" + hue1 +"deg)"
@@ -148,23 +152,14 @@ function randomIntFromInterval(min, max) { // min and max included
         return Math.floor(Math.random() * (max - min + 1) + min)
         }
          titlesat = randomIntFromInterval(125, 150)
-         sitetitle.style.filter =  "hue-rotate(" + titlecolor + "deg)"+ " saturate(" + titlesat + "%)" + " brightness(200%)";
+         sitetitle.style.filter =  "hue-rotate(" + titlecolor + "deg)"+ " saturate(" + titlesat + "%)" + " brightness(100000%) blur(2rem) contrast(1000000)";
 
-document.addEventListener('keydown', function(keys) {
-
-//Key Values:
-// - Spacebar: 32
-// - W: 87
-// - A: 65
-// - S: 83
-// - D: 68
-// - Up: 38
-// - Left: 37
-// - Right 39
-// - Escape: 27
-
-if (keys.which == 32) {
-    play();
+function play() {
+    sitetitle.style.opacity = 1
+    sitetitle.style.filter =  "hue-rotate(" + titlecolor + "deg)"+ " saturate(" + titlesat + "%)" + " brightness(200%) blur(0rem)";
 }
-});
+
+setTimeout(() => {
+    play()
+}, 15000);
 </script>
