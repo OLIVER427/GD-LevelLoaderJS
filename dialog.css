@@ -1,0 +1,9 @@
+.dialogBox {
+    transition-duration: 200ms;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.dialogBox > img {
+
+}
