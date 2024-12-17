@@ -7,7 +7,7 @@
     font-weight: normal; 
     font-style: normal; 
 } 
-p {
+#paragraphlol {
     font-family: 'Pusab';
     color:white;
     font-size:50pt;
@@ -113,6 +113,8 @@ left: 50%;
 </style>
 <title>Customization Options</title>
 <link rel="icon" href="style/GJ_paintBtn_001.png">
+<link rel="stylesheet" href="dialog.css">
+<script src="javascript/dialog.js"></script>
 </head>
 <html>
     <img id="back" onclick="document.location.href=('./');" src="style/GJ_arrow_03_001.png">
@@ -127,11 +129,11 @@ left: 50%;
 </div>
 
 <div class="selectionCon" id="cubeSelectionCon">
-<p>Nothing here yet...</p>
+<p id="paragraphlol">Nothing here yet...</p>
 </div>
 
 <div class="selectionCon" id="shipSelectionCon">
-<p>Nothing here yet...</p>
+<p id="paragraphlol">Nothing here yet...</p>
 </div>
 
 <div class="selectionCon" id="dfxSelectionCon">
@@ -144,6 +146,7 @@ if (document.cookie.includes("bg")) {
 
 } else {
     document.cookie = "bg=true; expires= Wed,01 Jan, 3000 12:00:00 UTC; path=/; SameSite=none; Secure";
+    //newDialog("Potbor","What are you doing here?!", "dialog/dialogIcon_025-uhd.png", "customizeSecondaryDialog0()")
 }
 
 var lastDfx = "01"
@@ -265,4 +268,10 @@ if (keys.which == 27) {
     back();
 }
 })
+if (document.cookie.includes('firstshop=false')) {
+
+} else {
+    document.cookie = "firstshop=false; expires= Wed,01 Jan, 3000 12:00:00 UTC; path=/; SameSite=none; Secure";
+    newDialog("Potbor","What are you doing here?!?!!!?1/1/?!?/?", "dialog/dialogIcon_025-uhd.png", "customizeSecondaryDialog0()")
+}
 </script>
