@@ -1,9 +1,93 @@
-.dialogBox {
+#dialogBoxBG {
+    position: fixed;
+    transform:translate(-50%,-50%);
+    top: -20%;
+    left: 50%;
     transition-duration: 200ms;
     display: flex;
     justify-content: left;
     align-items: center;
+    z-index: 999999;
+    width: 710px;
+    height: 210px;
+    border-radius: 30px;
+    border: solid white 4px;
+    background-color: black;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
 }
-.dialogBox > img {
+#dialogBox {
+    position: fixed;
+    transform:translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    transition-duration: 200ms;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    z-index: 99999;
+    width: 700px;
+    height: 200px;
+    border-radius: 20px;
+    background-color: #344498;
+}
+#dialogImg {
+width: 150px;
+height: auto;
+padding-left: 20px;
+padding-right: 20px;
+}
 
+#dialogTextBox {
+flex-direction: column;
+border-radius: 20px;
+width: 480px;
+height: 160px;
+background-color: #29387b;
+
+}
+#nameText {
+    position: fixed;
+    top: 0px;
+    padding-left: 10px;
+    font-family:Pusab;
+    font-size:25pt;
+    color:white;
+    -webkit-text-stroke-width: 2px;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3); 
+    -webkit-text-stroke-color: black;
+}
+
+#dialogText {
+    position: fixed !important;
+    padding-left: 20px;
+    top: 60px ;
+    width: 450px;
+    height: 200px;
+    text-wrap: wrap;
+    font-family: Helvetica, Arial;
+    color: white !important;
+    font-size:18pt;
+}
+#endDialog {
+    position:fixed;
+    transform:translate(-50%, -50%);
+    width: auto;
+    height: 70px;
+    top: 100%;
+    left:50%;
+    z-index:9999999;
+    transition-duration: 100ms;
+}#endDialog:hover {cursor: pointer; height: 80px;} #endDialog:active {height: 70px;}
+
+#dimmer {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    z-index: 99;
+    width: 100vw;
+    height: 100vh;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+    transition-duration: 100ms;
 }

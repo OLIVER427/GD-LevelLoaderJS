@@ -1,4 +1,10 @@
 <style>
+@font-face { 
+    font-family: 'Pusab'; 
+    src: url('style/Pusab.ttf') format('truetype'); 
+    font-weight: normal; 
+    font-style: normal; 
+}
 #movebg{
     filter: sepia(100%) saturate(1000%) brightness(70%) hue-rotate(180deg);
     position:fixed;
@@ -11,12 +17,6 @@
     z-index:-1;
     zoom:0.6
 }
-@font-face { 
-    font-family: 'Pusab'; 
-    src: url('style/Pusab.ttf') format('truetype'); 
-    font-weight: normal; 
-    font-style: normal; 
- } 
 #corner {
     position: fixed;
     width: 20vh;
@@ -232,7 +232,12 @@ pre {
 
 
 </body>
+<script src="javascript/dialog.js"></script>
 <script>
+//newDialog("OLIVER427","Please expect bugs, and don't expect much quality in the gameplay, this is an old project. Thanks for playing anyway!", "dialog/dialogIcon_100-uhd.png", "removeDialog()")
+//newDialog("Scratch","test 0", "dialog/dialogIcon_008-uhd.png", `testSecondaryDialog()`)
+//newDialog("Potbor","Get off of your phone sam!", "dialog/dialogIcon_025-uhd.png")
+
 var sitetitle = document.getElementById('title2');
 
 var titlecolor = 100;
@@ -252,12 +257,12 @@ menutheme.loop = true;
 function checkCookie() {
 if (document.cookie.includes("bg=true")) {
     toggleonbg();
-}
-if (document.cookie.includes("bg=false")){
+} else if (document.cookie.includes("bg=false")){
     toggleoffbg();
 } else {
     document.cookie = "bg=true; expires= Wed,01 Jan, 3000 12:00:00 UTC; path=/; SameSite=none; Secure";
     toggleonbg();
+    newDialog("OLIVER427","Please expect bugs, and don't expect much quality in the gameplay, this is an old project. Thanks for playing anyway!", "dialog/dialogIcon_100-uhd.png", "firstDialogEnd()")
 }
 
 if (document.cookie.includes("dfx")){
@@ -292,7 +297,7 @@ function movebg(){
   bgImage.style.backgroundPositionX = "-" + x1 + "px";
   bgImage.style.filter = "sepia(100%) saturate(1000%) brightness(70%) hue-rotate(" + hue1 +"deg)"
 }
-setInterval(movebg,10);
+
 
 function randomIntFromInterval(min, max) { // min and max included 
         return Math.floor(Math.random() * (max - min + 1) + min)
@@ -323,4 +328,5 @@ if (keys.which == 32) {
     //play();
 }
 });
+setInterval(movebg,10);
 </script>
