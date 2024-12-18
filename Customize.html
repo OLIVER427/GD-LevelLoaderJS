@@ -104,12 +104,14 @@ scrollbar-width: none;
     transition-duration: 100ms;
 }
 
-#player {
+#secretDoor {
 position: fixed;
 transform: translate(-50%, -102%);
-top: 300px;
+top: 322px;
 left: 50%;
-}
+width: auto;
+height: 211.6px;
+} #secretDoor:hover {cursor: pointer;}
 </style>
 <title>Customization Options</title>
 <link rel="icon" href="style/GJ_paintBtn_001.png">
@@ -119,7 +121,7 @@ left: 50%;
 <html>
     <img id="back" onclick="document.location.href=('./');" src="style/GJ_arrow_03_001.png">
 <body>
-<img id="player" src="icons/robtop.png">
+<img id="secretDoor" src="style/secretDoorBtn2_closed_001.png" onclick="gotosecret()">
 <div id="line"></div>
 
 <div id="btnCon">
@@ -142,6 +144,15 @@ left: 50%;
 </html>
 
 <script>
+if (document.cookie.includes('secret0=true')) {
+document.getElementById('secretDoor').src = "style/secretDoorBtn2_open_001.png"
+}
+function gotosecret() {
+    if (document.cookie.includes('secret0=true')) {
+    document.location.href=('MiscSheets/PlayerExplosion_7-hdUNUSABLE/secret.html')
+    }
+}
+
 if (document.cookie.includes("bg")) {
 
 } else {

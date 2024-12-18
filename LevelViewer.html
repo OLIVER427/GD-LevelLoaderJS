@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <style>
+@font-face { 
+    font-family: 'Pusab'; 
+    src: url('style/Pusab.ttf') format('truetype'); 
+    font-weight: normal; 
+    font-style: normal; 
+}
 #back {
     position: fixed;
     width: 100px;
@@ -46,11 +52,16 @@ cursor: pointer;
 }#helpbtn:active{width: 5vw;}
 </style>
 <link rel="icon" href="style/GJ_hammerIcon_001.png">
+<link rel="stylesheet" href="dialog.css">
 <title>Level Data Viewer</title>
 <img id="back" onclick="document.location.href=('./');" src="style/GJ_arrow_01_001.png">
-<body style="overflow: scroll;width:9999999999999999999999999999999999999999999999999999999999999999999999999999999999999px;background-color: #6941ef;">
+<body style="overflow: scroll;width:9999999999999999999999999999999999999999999999999999999999999999999999999999999999999px;background-color: blue;">
     <div>
-        <input  id="dataInput" class="dataInput" style="width: 87vw;" placeholder=" insert data here...">
+        <input  id="dataInput" class="dataInput" style="width: 87vw;" placeholder=" Insert data here...">
+        <input  id="levelName" class="dataInput" style="width: 7vw; top: 7vh; left: 80.45vw;" placeholder="Level name here...">
+        <input  id="BGcolor" class="dataInput" style="width: 9.5vw; top: 7vh; left: 69.45vw;" placeholder="Background color here...">
+
+        <button class="dataInput dataBtn" style=" width: 9vw; left:76vw;top: 13vh; padding: 4px 0 18px 0" onClick="applyChanges()">Apply Changes</button>
         <button class="dataInput dataBtn" style=" width: 9vw; left:89vw; padding: 4px 0 18px 0" onClick="loadData()">Load Data</button>
         <button class="dataInput dataBtn" style=" width: 9vw; top: 7vh;left:89vw; padding: 4px 0 18px 0" onClick="saveData()">Save File</button>
         <img onclick="window.open('https:\/\/github.com/OLIVER427/GD-LevelLoaderJS?tab=readme-ov-file#well-how-can-i-make-a-level','_blank');" src="style/GJ_helpBtn_001.png" id="helpbtn">
@@ -58,6 +69,7 @@ cursor: pointer;
 <div id="levelContainer">
 </div> 
 </body>
+<script src="javascript/dialog.js"></script>
 <script src="javascript/blockPresets.js" ></script>
 <script>
 console.log() // CALCULATOR
@@ -81,6 +93,15 @@ function loadData() {
     //var lvlsong = new Audio('audio/' + Object.keys({levelData})[0] +'.mp3');
     //console.log(lvlsong);
     levelData = document.getElementById("dataInput").value;
+
+    if (levelData == "Glubfub") {
+        if (document.cookie.includes('secret0=true')) {
+
+    } else {
+    document.cookie = "secret0=true; expires= Wed,01 Jan, 3000 12:00:00 UTC; path=/; SameSite=none; Secure";
+    newDialog("The Keymaster","?!", "dialog/dialogIcon_004-uhd.png", "removeDialog()")
+    }
+    }
     //organizing data
     let dcAyVal = [['0', '0'],['-','-'],['-','-'],['-','-'],['transform: scale(-',',1)'],['scale:1 -',''],['rotate:','deg']];
     let blockData = levelData.split(';').map((elm) => elm.split(','));
@@ -122,9 +143,16 @@ function loadData() {
     };  
     window.scrollTo(0,1000)
     }
+    let customName = "Untitled Level"
+    let customColor = "Blue"
+    function applyChanges() {
+    customName = document.getElementById("levelName").value;
+    customColor = document.getElementById("BGcolor").value;
+    document.body.style.backgroundColor = document.getElementById("BGcolor").value;
+    }
 function saveData(){
-    let customName = prompt("Write a name for your level")
-    let customColor = prompt("Choose a background color (blue, green, any hexcode, etc.)")
+    //let customName = prompt("Write a name for your level")
+    //let customColor = prompt("Choose a background color (blue, green, any hexcode, etc.)")
     if (customName == "") {
         customName = "Untitled Level"
     }
@@ -174,7 +202,8 @@ function saveData(){
   a.download = file.name;
   a.click();
   window.URL.revokeObjectURL(url);
-  alert('If you haven\'t already, clone this github repository to your local file system. Then you can put your newly downloaded HTML file into the "Levels" folder, and open it to play!')
+  newDialog("The Mechanic","Clone this github repo (if you haven\'t already), and put the level file into the \"Levels\" folder. then open it!", "dialog/dialogIcon_051-uhd.png", "removeDialog()")
+  //alert('If you haven\'t already, clone this github repository to your local file system. Then you can put your newly downloaded HTML file into the "Levels" folder, and open it to play')
 } 
 
 
