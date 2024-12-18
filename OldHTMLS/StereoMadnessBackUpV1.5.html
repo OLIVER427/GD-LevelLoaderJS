@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<!-- imgs to edit (Id):18,19,20,21,39,45-60,99,100,106,107,129,130-->
+<style>
+#dataInput{
+    position: fixed;
+    background-color: #d5d2d5;
+    opacity: 50%;
+    border: 3px solid #d5d2d5;
+    height: 20px;
+    border-radius: 1px;
+}
+
+#dataInput2{
+    position: fixed;
+    background-color: #d5d2d5;
+    opacity: 50%;
+    border: 3px solid #d5d2d5;
+    height: 20px;
+    border-radius: 1px;
+}
+
+#dataInput:focus{
+    outline: 3px solid #858285;
+}
+#levelContainer img{
+    position: absolute;
+    width: 70px;
+    max-height: 300px;
+}
+</style>
+<title>Stereo Madness</title>
+<link rel="icon" href="style/diffIcon_01_btn_001.png">
+<script src="funlevels.js" ></script>
+<script src="levels.js" ></script>
+<script src="blockPresets.js" ></script>
+<script>
+var lvlsong = new Audio('audio/StereoMadness.mp3');
+function loadData() {
+    
+    let levelData = StereoMadness; // LEVEL DATA REF
+    //var lvlsong = new Audio('audio/' + Object.keys({levelData})[0] +'.mp3');
+    //console.log(lvlsong);
+    
+    //organizing data
+    let dcAyVal = [['0', '0'],['-','-'],['-','-'],['-','-'],['transform: scale(-',',1)'],['scale:1 -',''],['rotate:','deg']];
+    let blockData = levelData.split(';').map((elm) => elm.split(','));
+    let collData = blockData.slice(1).map((elm) => Object.keys(blockPresets).includes(elm[1]) ? [elm,'b'] : (Object.keys(spikePresets).includes(elm[1]) ? [elm,'s']: Object.keys(specialPresets).includes(elm[1]) ? [elm,'p']: '')).filter(String);
+    let bDims = Object.assign(blockPresets, spikePresets, specialPresets);
+    let sBVal = document.createElement("img"); //setBlockValue
+    
+    //load imgs
+    let a = 1;
+    while(a < blockData.length){ //This while loop repeats it for every block                    This over here is a fun random rotation value thing. try it sometime
+        let props = 'left:' + blockData[a][3] *2.3333 + 'px;bottom:' + (blockData[a][5]-300) *2.3333 + 'px;'; //+ ' transform:rotate(' + blockValue[5] +'deg)';
+        let i = 7; //starts at 7 to skip sections of data (id, xPos, yPos)
+        while(i < blockData[a].length){//tuning the props variable.
+            let key = blockData[a][i-1];
+            if (dcAyVal[key] != undefined){ //debug purpopses: basically set css values to nothing if it is undefined
+                props = props + dcAyVal[key][0] + blockData[a][i] + dcAyVal[key][1] + ';';
+            }
+        i = i+2; //next property!
+        };
+        sBVal.src = "Blocks/" + blockData[a][1] + ".png"; //set srcs img
+        sBVal.style.cssText = props; //gives block the property
+        document.getElementById("levelContainer").appendChild(sBVal.cloneNode(true)); //*spawns elem*
+        a++; //next block!
+    };  
+        //dfx
+            let dfx;
+            let mxFrame = [0,12,10,10,9,10,13,11,11,14,12,12,12,10,14,16,19,15,23,13];
+            let frameNum = 1;
+            let playDfx;
+    
+            function death() {
+                dfx = Math.round(Math.random()*18.5 + 1);
+                frameNum = 1;
+                playDfx = setInterval(rnThru, 60)
+                document.getElementById('player').style.transform = 'rotation: 0deg';
+                function rnThru(){
+                    if (frameNum > mxFrame[dfx]) {
+                        document.getElementById('player').src = 'style/robtop.png';
+                        clearInterval(playDfx);
+                    }else{
+                        document.getElementById('player').src = "MiscSheets/PlayerExplosion_" + dfx + "-hd/" + frameNum + ".png";
+                        frameNum++;
+                    }
+                }
+            }
+
+    //collision
+    let gDir = -1; //gravity direction
+    function collCheck(a) { //set "coll" to all the elements colliding with it.
+        coll = collData.map((elm) => elm[0][3]*2.33 >= x-70+bDims[elm[0][1]][0]*35 && elm[0][3]*2.33 <= x+35+bDims[elm[0][1]][0]*35 && (elm[0][5]-283.26)*2.33 >= a-bDims[elm[0][1]][1]*35 && (elm[0][5]-283.26)*2.33 <= a+bDims[elm[0][1]][0]*35 ? elm : a <= -660 || a>= 2000? elm : '').filter(String);// collision check
+        coll = coll.length == collData.length ? [[['0'],'b']] : coll;//if you are colliding with the ground NOTE: MAJOR BUGS IF THERE ARE LESS THAN 100 OBJECTS
+    };
+    
+    let y = -660;
+    let x = -20;
+    let xV = 15;
+    let yV = 1; //y - Velocity
+    let g = 2.53;
+    let r = 0;
+    let buttonDown = 0;
+    
+    setTimeout(function(){
+
+        //button detection
+        window.addEventListener("keydown", (e)=>{if(e.which === 32 || e.which === 87 || e.which === 38){buttonDown = 1;}}); //detect when keys are pressed.
+        window.addEventListener("keyup", (e)=>{if(e.which === 32 || e.which === 87 || e.which === 38){buttonDown = 0;}});
+        
+        self.setInterval(() =>{
+            if(buttonDown === 1){
+                collCheck(y-2*-gDir);
+                yV = coll.map((elm)=> elm[1]).includes('b')? 28*-gDir : yV;//this is where it sets the y velocity
+            }
+            //gravity
+            yV = yV+g*gDir;
+            y = y+yV;
+
+            r+=xV/1.17;
+            
+            //coll.map((elm)=> elm[1]).includes('b')
+            collCheck(y);
+            if(coll.map((elm)=> elm[1]).includes('s')){
+                
+            }else if(coll.map((elm)=> elm[1]).includes('b')) {
+                yV = 0;
+                r = Math.round(r/90)*90;
+                while (coll.map((elm)=> elm[1]).includes('b')){
+                    y-=gDir;
+                    collCheck(y);
+                }
+            }
+
+            x = x + xV;
+            //update frame:
+            document.getElementById('player').style.left = x + 'px'; 
+            document.getElementById('player').style.bottom = y + 'px'; 
+            document.getElementById('player').style.rotate = r + 'deg';
+            if(x>= 350){
+                window.scroll({ top: 750, left: x-350, behavior: 'auto' });
+            }
+            },20);
+        }, 20);
+};
+
+
+setTimeout(() => {  //runs function
+    loadData()
+    //lvlsong.play()
+}, 100);
+
+</script>
+<html style="overflow: hidden">
+<body style="background-color: #6941ef;">
+    <!-- <div>
+        <input  id="dataInput" style="width: 87vw;" placeholder=" insert data here...">
+        <button id="dataInput2" style=" width: 9vw; left:89vw; padding: 4px 0 18px 0" onClick="loadData()">Load Data</button>
+    </div> -->
+    <div id = "levelContainer" style="overflow: hidden;height: 10000px;">
+        <!--The imgs go here-->
+    </div>
+<img id="player" src="style/robtop.png" style="position: absolute;width: 70px; height: auto;">
+</body>
+</html>

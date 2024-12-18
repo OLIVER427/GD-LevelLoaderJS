@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<style>
+#dataInput{
+    position: fixed;
+    background-color: #d5d2d5;
+    opacity: 50%;
+    border: 3px solid #d5d2d5;
+    height: 20px;
+    border-radius: 1px;
+}
+#dataInput:focus{
+    outline: 3px solid #858285;
+}
+img{
+    position: absolute;
+    width: 70px;
+    max-height: 140px;
+}
+</style>
+<script>
+    
+//EXAMPLE DATA: kS38,1_255_2_0_3_0_4_-1_6_1000_7_1|1_255_2_153_3_0_4_-1_6_1001_7_1|1_255_2_255_3_0_4_-1_6_1009_7_1|1_255_2_255_3_255_4_-1_6_1004_7_1|1_255_2_255_3_255_4_-1_6_1002_7_1|,kA13,0,kA15,0,kA16,0,kA14,,kA6,5,kA7,7,kA17,1,kA18,0,kS39,0,kA2,0,kA3,0,kA8,0,kA4,0,kA9,0,kA10,0,kA11,0;1,1,2,15,3,15;1,83,2,45,3,15;1,1332,2,75,3,28,6,180;1,1332,2,105,3,2;
+
+ //= scaleX(-1);
+function loadData() {
+    let dcAySrt = ['0', '0', '0', 'transform:scaleX(-', 'transform:scaleY(-', 'transform:rotate('];
+    let dcAyEnd = ['0', '0', '0', ')', ')', 'deg)']; //(dcAy = dedode array (end/start))
+    let levelData = document.getElementById("dataInput").value;
+    let blockNum = levelData.split(';');         // Block # = blockNum
+    let blockValue = blockNum[1].split(','); // Value # of Block = blockValue 
+    let setBlockValue = document.createElement("img");
+    let a = 1;
+    while(a < blockNum.length - 1){ //This while loop repeats it for every bloc
+        let props = '';
+        let i = 7; //starts at __ to skip sections of data
+        let key = blockValue[i-1];
+            while(i < blockValue.length){//tuning the props variable. 
+        console.log(blockValue[3]);
+        props = props + ";" + dcAySrt[key] + blockValue[i] + dcAyEnd[key];
+        i = i+2;
+        };
+        setBlockValue.src = "Blocks/" + blockValue[1] + ".png"; //set srcs img
+        setBlockValue.style.left = blockValue[3] * 2.333333 + "px";// X position
+        setBlockValue.style.bottom = blockValue[5] * 2.33333 + "px"; // Y position
+        setBlockValue.style.position = "absolute";
+        setBlockValue.style.cssText = props.substring(1); //gives block the property
+        document.getElementById("levelContainer").appendChild(setBlockValue.cloneNode(true)); //*spawns elem*
+        blockValue = blockNum[1 + a].split(','); //continue the code to the the next block
+        a++; //next block!
+    };
+};
+</script>
+<body style="overflow: scroll; width:9999px;background-color: #6941ef;">
+    <div>
+        <input  id="dataInput" style="width: 87vw;" placeholder=" insert data here...">
+        <button id="dataInput" style=" width: 9vw; left:89vw; padding: 4px 0 18px 0" onClick="loadData()">Load Data</button>
+    </div>
+    <div id = "levelContainer" style="width: 999999px;height: 100%">
+        <!--The imgs go here-->
+    </div>
+</body>
+
+

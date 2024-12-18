@@ -1,0 +1,234 @@
+<style>
+@font-face { 
+    font-family: 'Pusab'; 
+    src: url('style/Pusab.ttf') format('truetype'); 
+    font-weight: normal; 
+    font-style: normal; 
+ } 
+#corner {
+    position: fixed;
+    width: 25vh;
+    height: 25vh;
+    bottom:0%;
+    left:0px;
+}
+#corner1 {
+    position: fixed;
+    width: 25vh;
+    height: 25vh;
+    bottom:0%;
+    right:0px;
+    transform: rotate(270deg);
+}
+
+#back {
+    position: fixed;
+    width: 100px;
+    height: 132px;
+    top:3%;
+    left:2%;
+}
+
+#pusabtxt {
+    position: fixed;
+    font-family: 'Pusab';
+    color:white;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,-30%);
+    font-size:60pt;
+    -webkit-text-stroke-width: 3.2px;
+    text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3); 
+    -webkit-text-stroke-color: black;
+    z-index: 9;
+}
+
+#ground {
+    position: fixed;
+    width: 100%;
+    height: auto;
+    bottom:-30%;
+    right:0%;
+    z-index: -1;
+    filter:saturate(500%);
+    
+}
+#bgrnd {
+    background-image: url("style/bgSM.jpg");
+    position: fixed;
+    width:10000px;
+    height: 10000px;
+    left: -200px;
+    top: -10px;
+    z-index: -2;
+}
+
+#topbar {
+    transform: translate(-50%,-50%);
+    position: fixed;
+    width:700px;
+    height: auto;
+    left: 50%;
+    top:5%;
+    z-index: 1;
+}
+
+
+#difficon {
+    position: fixed;
+    left: -9%;
+    top: -16%;
+    height: auto;
+    width: 100px;
+}
+
+#staricon {
+    position: fixed;
+    left: auto;
+    top: auto;
+    height: auto;
+    width: 100px;
+}
+
+#container {
+    position: fixed;
+    border-radius:20px;
+    background-color:black;
+    opacity: 25%;
+    padding: 10px 10px 0 10px;
+    text-align:center;
+    margin: 0 auto;
+    width: 900px;
+    height: 300px;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+#clickcontainer {
+    position: fixed;
+    border-radius:20px;
+    background-color:black;
+    opacity: 0%;
+    padding: 10px 10px 0 10px;
+    text-align:center;
+    margin: 0 auto;
+    width: 900px;
+    height: 300px;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+#rightbtn {
+    position: fixed;
+    width: 80px;
+    height: auto;
+    top:15%;
+    right:4%;
+    transform: translate(50%, 50%);
+}
+
+#leftbtn {
+    position: fixed;
+    width: 80px;
+    height: auto;
+    top:29%;
+    left:1%;
+    transform: translate(50%, 50%);
+    transform: scaleX(-1);
+}
+
+</style>
+
+<title>GD Level Loader</title>
+<link rel="icon" type="image/x-icon" href="Blocks/1329.png">
+<!--- Whoops I accedentally found the ® symbol. Ah shoot you figured out that I copied/pasted that other screen to make this one. -->
+<div id="bgrnd"></div>
+<body align="center" style="background-color: blue;">
+<div onclick="playlvl()" id="clickcontainer"></div>
+<p id="pusabtxt"><!-- <img id="difficon" src="style/diffIcon_01_btn_001.png"> -->Stereo Madness</p>
+<div id="container"></div>
+<img id="corner" src="style/corner.png">
+<img id="corner1" src="style/corner.png">
+<img id="back" onclick="back()" src="style/GJ_arrow_01_001.png">
+<img id="ground" src="style/grounddisplaySM.png">
+<img id="topbar" src="style/GJ_topBar_001.png">
+
+<img id="rightbtn" onclick="right()" src="style/navArrowBtn_001.png">
+<img id="leftbtn" onclick="left()" src="style/navArrowBtn_001.png">
+
+</body>
+<script>
+// Haha we gave you a fake loading screen cause it loads too fast :)
+//ah shoot now you can tell we just copied the loading page to make this one
+
+var backbtn = document.getElementById('back');
+var leftB = document.getElementById('leftbtn');
+var rightB = document.getElementById('rightbtn');
+var playsnd = new Audio('audio/playSound_01.ogg')
+
+
+function playlvl() {
+    playsnd.play();
+    setTimeout(() => {
+        document.location.href=('StereoMadness.html');
+    }, 1000);
+}
+
+function back() {
+    backbtn.style.width = "110px";
+    backbtn.style.height = "142px";
+    setTimeout(() => {
+        backbtn.style.width = "100px";
+        backbtn.style.height = "132px";
+        document.location.href=('index.html');
+    }, 100);
+}
+function right() {
+    rightB.style.width = "90px";
+    setTimeout(() => {
+        rightB.style.width = "80px";
+        document.location.href=('COMINGSOON.html');
+    }, 100);
+}
+function left() {
+    leftB.style.width = "90px";
+    setTimeout(() => {
+        leftB.style.width = "80px";
+        document.location.href=('COMINGSOON.html');
+    }, 100);
+}
+
+document.addEventListener('keydown', function(keys) {
+
+//Key Values:
+// - Spacebar: 32
+// - W: 87
+// - A: 65
+// - S: 83
+// - D: 68
+// - Up: 38
+// - Left: 37
+// - Right: 39
+// - Escape: 27
+
+if (keys.which == 32) {
+    playlvl();
+}
+
+if (keys.which == 37) {
+    left();
+}
+
+if (keys.which == 39) {
+    right();
+}
+
+if (keys.which == 27) {
+    back();
+}
+});
+</script>

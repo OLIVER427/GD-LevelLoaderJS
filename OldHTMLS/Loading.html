@@ -1,0 +1,127 @@
+<style>
+@font-face { 
+    font-family: 'Pusab'; 
+    src: url('style/Pusab.ttf') format('truetype'); 
+    font-weight: normal; 
+    font-style: normal; 
+ } 
+#corner {
+    position: fixed;
+    width: 20vh;
+    height: 20vh;
+    top:80%;
+    left:0px;
+}
+#corner1 {
+    position: fixed;
+    width: 20vh;
+    height: 20vh;
+    top:80%;
+    right:0%;
+    transform: rotate(270deg);
+}
+#corner2 {
+    position: fixed;
+    width: 20vh;
+    height: 20vh;
+    top:0%;
+    left:0%;
+    transform: rotate(90deg);
+}
+#corner3 {
+    position: fixed;
+    width: 20vh;
+    height: 20vh;
+    top:0%;
+    right:0%;
+    transform: rotate(180deg);
+}
+
+#loading {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    top: 30%;
+    left: 40%;
+    transform: translate(-50%,-50%);
+    animation: rotate 1s infinite linear;
+}
+
+@keyframes rotate {
+   from { transform: rotate(0deg); }
+   to { transform: rotate(359deg); }
+}
+
+body {
+    background-image: url("style/bggd.jpg");
+    position: fixed;
+    background-position-y: 20% 
+}
+
+#splash {
+    position: fixed;
+    font-family: 'Pusab';
+    color:white;
+    top: 6%;
+    left: 50%;
+    transform: translate(-50%,-10%);
+    font-size:50pt;
+    -webkit-text-stroke-width: 2.9px;
+    text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3); 
+    -webkit-text-stroke-color: black;
+}
+
+#errmactually {
+    position: fixed;
+    font-family: 'Pusab';
+    color:red;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%,-30%);
+    font-size:30pt;
+    -webkit-text-stroke-width: 1.8px;
+    text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3); 
+    -webkit-text-stroke-color: black;
+}
+</style>
+<title>GD Level Loader</title>
+<link rel="icon" type="image/x-icon" href="Blocks/1329.png">
+<!--- Whoops I accedentally found the ® symbol. Ah shoot you figured out that I copied/pasted that other screen to make this one. -->
+<body style="background-color: blue;">
+<img id="corner" src="style/corner.png">
+<img id="corner1" src="style/corner.png">
+<img id="corner2" src="style/corner.png">
+<img id="corner3" src="style/corner.png">
+
+<pre id="splash">
+Stop looking at my screen
+</pre>
+<img id="loading" src="style/loading.png">
+<pre id="errmactually"></pre>
+</body>
+<script>
+// Haha we gave you a fake loading screen cause it loads too fast :)
+var loadtime = 7000;
+var rndtxt = 1;
+const splashtxt = document.getElementById('splash');
+const errortxt = document.getElementById('errmactually');
+
+function randomIntFromInterval(min, max) { // min and max included 
+        return Math.floor(Math.random() * (max - min + 1) + min)
+        }
+         loadtime = randomIntFromInterval(1500, 4000)
+
+setTimeout(() => {
+    document.location.href=('LevelViewer.html');
+}, loadtime)
+
+setTimeout(() => {
+    errortxt.innerHTML = "Taking too Long? Try Reloading the page.";
+}, 7000)
+
+        splashes = ["Loading the loader", "All assets by RobTopGames", "Bro thats so unsightreadable", "Stay away from the Map Packs", "2.3 when", "Who even reads these?", "RubRub won't find me here...", "Haxor Momento", "Sir, you cant park here", "Buy yourself a house", "Waltuh, Putcha DS away Waltuh", "Hacking the mainframe", "Adding blocks", "Removing Explorers", "Are Wii gonna have a problem?", "Adding CSS", "Implementing Javascript", "Displaying HTML", "Installing Update 1 of 15", "WE needs to your desktop", "I like trains", "Simulating Life", "                           This level contains unverified user coins (bronze)", "Adding Physics", "Syntax Error", "              Now try completing it without checkpoints", "Functionifying levels", "DON'T LET THE CAGE CLOSE TOO FAR", "Also Try Trigonometry Crash!", "Ropert Topert!11!!1!", "Save size is within limits", "Check steam", "Ummm I ated it all", "Are you a bing user? No? good.", "Dont use Icon Hack. It sucks.", "C'mon man, I just want my tea", "All Hail Logodomy", "Fixing Your mess", "I loove gd cologne", "Woah", "Copy, fail, delete. Repeat", "Too much splash text", "OLIVER427 was here", "You're such a block-head, 66", "La pollo es frío", "Wibberflee", "Get into a twitter argument", "Man, I'm dead :skull:", "WE GETTIN OUTA GD WITH THIS ONE", "How did we get here?", "moss fox", "woahlzy", "Subwoofer's Lullaby", "Robbing the Top", "such a yimply", "niles slow", "Kevin Eary", "Meedhiahlohjee", "its Epigg Gayymarr time", "Eat some c^rets", "rubrub pls fix", "this is fake","real engine","wrong code, whoops", "sawybeany", "You're gonna ruin his mewing streak!", "what's Oliver coding..." ]; 
+         rndtxt = randomIntFromInterval(0, splashes.length)
+
+        splashtxt.innerHTML = splashes[rndtxt];
+
+</script>
