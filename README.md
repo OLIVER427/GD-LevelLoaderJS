@@ -9,6 +9,25 @@
 
 A very laggy mess, but a recreation of Geometry Dash, made in pure Javascript, HTML, and CSS. So far, we have a (mostly) functioning cube gamemode, and a partially working ship gamemode, along with a really broken ball gamemode.
 
+## IMPORTANT TIP!!!!
+use Ctrl + and Ctrl - (Command on mac) to zoom in and out of the levels, it really helps see stuff, trust me.
+
+# New Stuff!
+
+Since this was a pretty laggy recreation, I added some new stuff in the last month to distract you from how bad this is!
+
+- New Death Effects
+- Customization Menu (death effects only)
+- Secrets
+- Secret Codes (not much though, ill add more rewards to them later)
+- Dialog Boxes
+- New Level Select Menu
+- Zoomed out the background on the title screen
+- More Lag (idk why, but like a year ago this was amazingly smooth gameplay)
+- New Level Viewer
+
+
+About the secrets... well its a github repo, so you can just go into the files and access them, or grab the codes or something, but if you want to do that I dont really se a point. You can if you want to though.
 ## How to make a level
 You can use GDColon's [Spreadsheet Editor](https://gdcolon.com/gdsheet), and paste your level data into the text input in the Level Viewer (through the editor button on the title screen). The level data should look something like this:
 

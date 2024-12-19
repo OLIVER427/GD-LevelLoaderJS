@@ -115,7 +115,7 @@ function loadData() {
     //let ctx = document.getElementById('canvas').getContext('2d')
     //let lstX = 0;
     //let lstY = 0;
-
+    window.scrollTo(0,1000)
     //load imgs
     let a = 1;
     while(a < blockData.length){ //This while loop repeats it for every block                    This over here is a fun random rotation value thing. try it sometime
@@ -204,6 +204,9 @@ function saveData(){
   window.URL.revokeObjectURL(url);
   newDialog("The Mechanic","Clone this github repo (if you haven\'t already), and put the level file into the \"Levels\" folder. then open it!", "dialog/dialogIcon_051-uhd.png", "removeDialog()")
   //alert('If you haven\'t already, clone this github repository to your local file system. Then you can put your newly downloaded HTML file into the "Levels" folder, and open it to play')
+  document.getElementById("dataInput").value = levelData
+  document.getElementById("levelName").value = customName
+  document.getElementById("BGcolor").value = customColor
 } 
 
 
