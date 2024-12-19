@@ -25,7 +25,7 @@ git clone https://github.com/OLIVER427/GD-LevelLoaderJS.git
 ```
 after cloning this repo to a directory of your choice, place your custom level file you downloaded earlier into the Levels folder. Then open your custom level file to play!
 
-I will probably make a built in custom level player eventually, but its not a top priority so thats why you have to clone this repo to actually play your custom levels. (ok git lfs is mad at me so you might not be able to clone it)
+I will probably make a built in custom level player eventually, but its not a top priority so thats why you have to clone this repo (or just download it I guess) to actually play your custom levels. 
 
 ## There may be a lot of issues
 I helped make this with [BlockHead66](https://github.com/Blockhead66), when we had a lot less knowledge of Javascript and CSS, so I made some dumb mistakes and just ignored things that could have been WAY more efficient. I also have to individually grab each image file from a spritesheet (using GDColon's [Spritesheet Splitter](https://gdcolon.com/gdsplitter/)) so not every block and their functions are in the site.
@@ -62,3 +62,13 @@ yeah, sorry about that. but there is some menu music! to allow it, you have to e
 ### Edge
 
 #### I am not opening Edge for this, sorry Edge users
+
+# Hmm...
+
+
+If you made it this far, THANKS! I appreciate that you took the time to read how to use this site, and in reward, I give you this:
+```
+openthesecretprettyplease
+```
+Now you gotta figure out what to do with it! (hmm... where are the input boxes in this site again?)
+### GOOD LUCK, and NO CHEATING!

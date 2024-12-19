@@ -20,6 +20,27 @@ function newDialog(name, text, imgpath, endfunction) {
         document.getElementById('dialogBoxBG').style.top = "50%"
         }, 200);
 }
+function newSecretDialog(name, text, imgpath, endfunction) {
+    if (endfunction == "") {
+        endfunction = "removeDialog"
+    }
+    document.body.innerHTML += "<div id='dimmer'></div>"
+    document.body.innerHTML += `
+    <div id='dialogBoxBG'>
+    <img id='endDialog' src='../../style/GJ_chatBtn_01_001.png' onclick="`+ endfunction +`">
+    <div id='dialogBox'>
+    <img id='dialogImg' src='`+ imgpath +`'>
+    <div id='dialogTextBox'>
+<p id='nameText'>`+ name +`</p>
+<p id='dialogText'>`+ text +`</p>
+    </div>
+    </div>
+    </div>
+    `
+    setTimeout(() => {
+    document.getElementById('dialogBoxBG').style.top = "50%"
+    }, 200);
+}
 function removeDialog() {
     document.getElementById('dialogBoxBG').style.top = "-20%"
     if (dialogstatus == false) {
@@ -48,7 +69,7 @@ function firstDialogEnd() {
 
 
 
-//potbor in the customization shop (yes I know this is innefficient stop looking at this code)
+//potbor in the customization shop for the first time (yes I know this is innefficient stop looking at this code)
 function customizeSecondaryDialog3() {
     dialogstatus = true
     removeDialog()
@@ -78,3 +99,36 @@ function customizeSecondaryDialog0() {
         newDialog("Potbor","oh...", "dialog/dialogIcon_019-uhd.png", "customizeSecondaryDialog1()")
         }, 400);
 }
+
+//the keymaster when you enter the secret room for the first time
+function secretSecondaryDialog2() {
+    dialogstatus = true
+    removeDialog()
+    dialogstatus = false
+    setTimeout(() => {
+        newSecretDialog("The Keymaster","I HAVE SAID NOTHING", "../../dialog/dialogIcon_017-uhd.png", "removeDialog()")
+        }, 400);
+}
+function secretSecondaryDialog1() {
+    dialogstatus = true
+    removeDialog()
+    setTimeout(() => {
+        newSecretDialog("The Keymaster","Wait... you didn't come for <span style='color:lime'>it</span>?", "../../dialog/dialogIcon_004-uhd.png", "secretSecondaryDialog2()")
+        }, 400);
+}
+function secretSecondaryDialog0() {
+    dialogstatus = true
+    removeDialog()
+    setTimeout(() => {
+        newSecretDialog("The Keymaster","Before you ask, I will not give <span style='color:lime'>it</span> to you.", "../../dialog/dialogIcon_002-uhd.png", "secretSecondaryDialog1()")
+        }, 400);
+}
+/*
+function mainSecondaryDialog(name, text, imgpath, endfunction) {
+    dialogstatus = true
+    removeDialog()
+    setTimeout(() => {
+        newDialog(name,text,imgpath, endfunction)
+        }, 400);
+}
+*/
