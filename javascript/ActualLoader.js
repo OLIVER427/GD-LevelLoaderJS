@@ -1,5 +1,6 @@
 var page = document.getElementById('html'); // BE WARNED!!! REALLY WEIRD CODE UP AHEAD!!
 var fileName = location.href
+let paused = false
 //page.innerHTML += "<div style='position:absolute'></div>"
 //page.requestFullscreen();                       LEVEL DATA REF
                                                 //\\\\\\\///////////
@@ -8,8 +9,10 @@ var fileName = location.href
 let bgImage = document.getElementById('bg');
 
 function movebg() {
+    if (paused == false) {
     bgpos += 2;
     bgImage.style.backgroundPositionX = "-" + bgpos + "px";
+    }
 }
 var bgpos = 0;
 
@@ -91,6 +94,7 @@ function loadData() {
                 clearInterval(bgmoving)
                 document.getElementById('player').style.opacity = 0
                 gameRunning = false
+                paused = true
                 dfx = Math.round(Math.random()*18 + 1);
                 frameNum = 1;
                 playDfx = setInterval(rnThru, 60)
@@ -138,11 +142,25 @@ function loadData() {
     let g = 2.53;
     let r = 0;
     let btnD = 0;
+
+
     
     setTimeout(function(){
 
         //button detection
-        window.addEventListener("keydown", (e)=>{if(e.which === 32 || e.which === 87 || e.which === 38 || e.which === 1){btnD = 1; clckT = 1}}); //detect when keys are pressed.
+        window.addEventListener("keydown", (e)=>{
+            if(e.which === 32 || e.which === 87 || e.which === 38 || e.which === 1){
+                if (paused == false) {
+                btnD = 1; clckT = 1
+                }
+            }
+            if (e.which === 27) {
+                if (gameRunning == true) {
+                paused = !paused;
+                console.log(paused)
+                }
+            }
+        }); //detect when keys are pressed.
         window.addEventListener("keyup", (e)=>{if(e.which === 32 || e.which === 87 || e.which === 38 || e.which === 1){btnD = 0;}});
 
         window.addEventListener("mousedown", (e)=>{btnD = 1; clckT = 1});
@@ -150,7 +168,7 @@ function loadData() {
         let frameProgess = setInterval(() =>{
             //console.log(`y velocity: ${yV}, y position ${y}, gdir: ${gDir}`)
 //CUBE MECH
-if (gameRunning == true) {
+if (paused == false) {
             if(plyrMech == 'cube'){
                 if(btnD == 1){
                     //g = 2.53;
@@ -307,6 +325,7 @@ if (gameRunning == true) {
             document.getElementById('player').style.left = x + 'px'; 
             document.getElementById('player').style.bottom = y + 'px'; 
             document.getElementById('player').style.rotate = r + 'deg';
+
             if(x>= 350){
                 window.scroll({ top: 750, left: x-350, behavior: 'auto' });
             }

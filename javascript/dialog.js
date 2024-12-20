@@ -126,7 +126,18 @@ function secretSecondaryDialog0() {
         newSecretDialog("The Keymaster","Before you ask, I will not give <span style='color:lime'>it</span> to you.", "../../dialog/dialogIcon_002-uhd.png", "secretSecondaryDialog1()")
         }, 400);
 }
-/*
+
+//title secondary dialog
+function titleSecondaryDialog0() {
+    dialogstatus = true
+    removeDialog()
+    setTimeout(() => {
+        newDialog("OLIVER427","Oh, and make sure to read the <a href='https://github.com/OLIVER427/GD-LevelLoaderJS/blob/main/README.md'>README file</a>, it has a lot of useful information, and maybe even a secret :)", "dialog/dialogIcon_100-uhd.png", "firstDialogEnd()")
+    }, 400);
+}
+
+
+/* nah this wont work cause its so annoying to put a function with parameters inside a function with parameters
 function mainSecondaryDialog(name, text, imgpath, endfunction) {
     dialogstatus = true
     removeDialog()
