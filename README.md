@@ -27,7 +27,7 @@ Since this was a pretty laggy recreation, I added some new stuff in the last mon
 - New Level Viewer
 
 
-About the secrets... well its a github repo, so you can just go into the files and access them, or grab the codes or something, but if you want to do that I dont really se a point. You can if you want to though.
+About the secrets... well its a github repo, so you can just go into the files and access them, or grab the codes or something, but if you want to do that I dont really see a point. You can if you want to though.
 ## How to make a level
 You can use GDColon's [Spreadsheet Editor](https://gdcolon.com/gdsheet), and paste your level data into the text input in the Level Viewer (through the editor button on the title screen). The level data should look something like this:
 
