@@ -114,13 +114,24 @@
     height: 40px;
     margin-right: 4px;
 }
-
+#rainbow {
+    position: fixed;
+    background: red;
+    height: 100%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    overflow-y: hidden;
+    z-index: -900;
+    left: 50%;
+    top: 50%;
+}
 </style>
 
 <title>GD Level Loader</title>
 <link rel="icon" type="image/x-icon" href="style/secretCoinUI2_001.png">
 <div id="bgrnd"></div>
 <body style="background: linear-gradient(in hsl longer hue 90deg, red 0 0);">
+<div id="rainbow"></div>
 <div id="containercontainer">
 <div id="container" onclick="playlvl('StereoMadness')">
     <img src="style/diffIcon_01_btn_001.png" id="diff"><p id="pusabtxt">Stereo Madness</p>
@@ -188,6 +199,16 @@ function back() {
         document.location.href=('index.html');
     }, 100);
 }
+var huedegrees = 0
+setInterval(() => {
+    document.getElementById('rainbow').style.filter = "hue-rotate("+ huedegrees +"deg) saturate(300%)"
+    if (huedegrees == 360) {
+        huedegrees = 0
+    } else {
+        huedegrees++
+    }
+}, 10);
+
 document.addEventListener('keydown', function(keys) {
 
 //Key Values:
