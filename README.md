@@ -1,5 +1,5 @@
 ![Main Logo for GD Level Loader](readme-imgs/LogoBanner.png)
-[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+![GitHub License](https://img.shields.io/github/license/OLIVER427/GD-LevelLoaderJS)
 ![GitHub repo size](https://img.shields.io/github/repo-size/OLIVER427/GD-LevelLoaderJS)
 ![GitHub Repo stars](https://img.shields.io/github/stars/OLIVER427/GD-LevelLoaderJS)
 ![GitHub forks](https://img.shields.io/github/forks/OLIVER427/GD-LevelLoaderJS)
