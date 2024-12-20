@@ -22,7 +22,7 @@ function newDialog(name, text, imgpath, endfunction) {
 }
 function newSecretDialog(name, text, imgpath, endfunction) {
     if (endfunction == "") {
-        endfunction = "removeDialog"
+        endfunction = "removeDialog()"
     }
     document.body.innerHTML += "<div id='dimmer'></div>"
     document.body.innerHTML += `
@@ -70,6 +70,9 @@ function firstDialogEnd() {
 
 
 //potbor in the customization shop for the first time (yes I know this is innefficient stop looking at this code)
+function lockedItem() {
+newDialog(" ","A Secret is required to unlock this Death Effect", "style/GJ_lockGray_001.png", "removeDialog()")
+}
 function customizeSecondaryDialog3() {
     dialogstatus = true
     removeDialog()

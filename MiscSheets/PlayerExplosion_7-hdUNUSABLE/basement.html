@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+@font-face { 
+    font-family: 'Pusab'; 
+    src: url('../../style/Pusab.ttf') format('truetype'); 
+    font-weight: normal; 
+    font-style: normal; 
+} 
+body {
+    background-image: linear-gradient(#00051e, #00020e);
+    height: 100vh;
+    overflow-y: hidden;
+}
+#back {
+    position: fixed;
+    width: 100px;
+    height: auto;
+    top:10%;
+    left:5%;
+    transform: translate(-50%, -50%);
+}#back:active{width: 110px;} #back:hover{cursor: pointer;} 
+</style>
+<link rel="icon" href="../../style/GJ_secretLock2_001.png">
+<link rel="stylesheet" href="../../dialog.css">
+<title>? ? ?</title>
+</head>
+<img id="back" onclick="document.location.href=('secret.html');" src="../../style/GJ_arrow_01_001.png">
+<img>
+<body>
+
+</body>
+</html>
+<script src="../../javascript/dialog.js"></script>
+
+<script>
+var song = new Audio('../../audio/secretLoop02.mp3')
+song.loop = true;
+song.play()
+if (document.cookie.includes('accessSecret=true')) {
+
+} else {
+    document.cookie = "accessSecret=true; expires= Wed,01 Jan, 3000 12:00:00 UTC; path=/; SameSite=none; Secure";
+    newSecretDialog("The Keymaster","You shouldn't be here", "../../dialog/dialogIcon_002-uhd.png", "secretSecondaryDialog0()")
+}
+
+let glubfubDialog = [
+    "How did you find me so easily?", //0
+    "Go away!",
+    "Why won't you leave?",
+    "I have nothing of interest",
+    "Forget about this room",
+    "You have no purpose to be here",
+    "<span style='color:lime'>whats the <span style='color:red'>m</span><span style='color:orange'>a</span><span style='color:yellow'>g</span><span style='color:green'>i</span><span style='color:blue'>c</span> word...</span>",
+    "No touchy!",
+    "Stop pushing the button!",
+    "This is messed up.",
+    "Why do you continue?",
+    "I don't see a point to this",
+    "Your actions have Consequences",
+    "No you dont get a reward!",
+    "Can you just leave?",
+    "This is pointless",
+    "<span style='color:lime'>Its <span style='color:magenta'>magenta</span> now?</span>",
+    "<span style='color:lime'>What ever happened to <span style='color:red'>red</span></span>",
+    "Why don't you go beat a level?",
+    "Quit <span style='color:lime'>it</span>!",
+    "How come nobody listens to me?",
+    "...",
+    "......",
+    "This is madness.",
+    "I can't believe this.",
+    "<span style='color:lime'>Such an unfinished game</span>",
+    "What are you getting out of this?",
+    "What is a \"BlockHead66\" ? ",
+    "Go make a level or something",
+    "I'm not giving <span style='color:lime'>it</span> to you...",
+    "Now GET OUT!",
+    "...",
+    "So irritating" // 32
+]
+let speakCounter = 0
+function cycleGlubfub() {
+    checkSecrets()
+    document.getElementById('speaking').innerHTML = glubfubDialog[speakCounter]
+    speakCounter++
+    if (speakCounter > 31) {
+        speakCounter = 0
+    }
+    document.getElementById("input").value = ""
+}
+</script>
